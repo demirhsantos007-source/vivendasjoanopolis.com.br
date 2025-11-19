@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vivenda Joanópolis - Refúgio Exclusivo à Beira da Represa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+
+    /* HERO */
+    .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+    .hero-carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
+    .hero-carousel-slides { display: flex; width: 100%; height: 100%; transition: transform 1s ease-in-out; }
+    .hero-carousel-slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; position: relative; }
+    .hero-carousel-slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+
+    .hero-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.35); color: white; border: none; padding: 12px 18px; cursor: pointer; font-size: 2rem; transition: background 0.3s; z-index: 2; border-radius: 8px; }
+    .hero-btn:hover { background: rgba(0,0,0,0.6); }
+    .hero-btn.prev { left: 20px; } .hero-btn.next { right: 20px; }
+
+    .hero-indicators { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 2; }
+    .hero-indicators .indicator { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.3s; }
+    .hero-indicators .indicator.active { background: white; box-shadow: 0 0 6px rgba(0,0,0,0.25); }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero-content { position: relative; z-index: 1; animation: fadeIn 1.5s ease-in; padding: 0 20px; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 300; margin-bottom: 20px; }
+    .hero-content p { font-size: 1.3rem; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .btn { display: inline-block; padding: 15px 40px; background: #27ae60; color: white; text-decoration: none; border-radius: 50px; font-size: 1.1rem; transition: all 0.3s; border: none; cursor: pointer; }
+    .btn:hover { background: #1e8449; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .btn-blue { background: #3498db; } .btn-blue:hover { background: #2980b9; }
+    .btn-white { background: white; color: #27ae60; } .btn-white:hover { background: #f0f0f0; }
+
+    /* SECTIONS */
+    section { padding: 80px 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2.5rem; font-weight: 300; margin-bottom: 15px; }
+    .section-subtitle { text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+    /* HOUSE CARD */
+    .house-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); margin-bottom: 60px; }
+    .house-name { font-size: 2rem; font-weight: 300; padding: 30px; background: #f8f9fa; border-bottom: 1px solid #e0e0e0; }
+
+    /* CAROUSEL */
+    .carousel { position: relative; height: 500px; overflow: hidden; cursor: pointer; }
+    .carousel-slides { display: flex; height: 100%; transition: transform 0.5s ease; }
+    .carousel-slide { min-width: 100%; height: 100%; background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #f0f0f0; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px 20px; cursor: pointer; font-size: 1.5rem; transition: background 0.3s; z-index: 3; }
+    .carousel-btn:hover { background: rgba(0,0,0,0.8); }
+    .carousel-btn.prev { left: 10px; } .carousel-btn.next { right: 10px; }
+    .carousel-indicators { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+    .indicator { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: background 0.3s; }
+    .indicator.active { background: white; }
+
+    /* LIGHTBOX */
+    .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; }
+    .lightbox.active { display: flex; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 90%; display: flex; align-items: center; justify-content: center; }
+    .lightbox-image { max-width: 100%; max-height: 90vh; object-fit: contain; }
+    .lightbox-close { position: absolute; top: 20px; right: 40px; font-size: 3rem; color: white; cursor: pointer; z-index: 10000; background: none; border: none; transition: transform 0.3s; }
+    .lightbox-close:hover { transform: scale(1.2); }
+    .lightbox-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; border: none; padding: 20px 25px; cursor: pointer; font-size: 2rem; transition: background 0.3s; z-index: 10000; }
+    .lightbox-btn:hover { background: rgba(255,255,255,0.4); }
+    .lightbox-btn.prev { left: 20px; } .lightbox-btn.next { right: 20px; }
+
+    /* HOUSE INFO */
+    .house-info { padding: 30px; }
+    .house-location { font-size: 1.1rem; margin-bottom: 5px; }
+    .house-specs { color: #666; margin-bottom: 20px; }
+    .divider { height: 1px; background: #e0e0e0; margin: 30px 0; }
+
+    /* HIGHLIGHTS */
+    .highlights { display: grid; gap: 20px; }
+    .highlight-item { display: flex; gap: 15px; }
+    .highlight-icon { font-size: 1.5rem; }
+    .highlight-text h3 { font-weight: 500; margin-bottom: 5px; }
+    .highlight-text p { color: #666; font-size: 0.95rem; }
+
+    .about-space h3 { font-size: 1.3rem; margin-bottom: 15px; }
+    .about-preview { color: #666; margin-bottom: 15px; white-space: pre-line; }
+    .show-more-btn { background: none; border: none; color: #27ae60; text-decoration: underline; cursor: pointer; font-size: 1rem; font-weight: 500; }
+
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto; }
+    .modal.active { display: block; }
+    .modal-content { background: white; max-width: 800px; margin: 50px auto; padding: 40px; border-radius: 15px; position: relative; }
+    .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2rem; cursor: pointer; color: #666; background: none; border: none; }
+    .modal-close:hover { color: #000; }
+    .modal-text { white-space: pre-line; line-height: 1.8; color: #333; }
+    .cta-btn-wrapper { text-align: center; margin-top: 30px; }
+
+    .benefits-section { background: #f8f9fa; }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .benefit-card { background: white; padding: 30px; border-radius: 10px; text-align: center; transition: all 0.3s; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    .benefit-card:hover { transform: translateY(-5px); background: #e8f5e9; }
+    .benefit-icon { font-size: 3rem; margin-bottom: 15px; }
+
+    .experiences-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    /* Make the subtitle in experiences-section white and slightly transparent */
+    .experiences-section .section-subtitle { color: rgba(255,255,255,0.85); }
+    .experiences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .experience-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 10px; transition: all 0.3s; }
+    .experience-card:hover { background: rgba(255,255,255,0.2); transform: translateY(-5px); }
+    .experience-icon { font-size: 3rem; margin-bottom: 15px; }
+
+    .location-section { background: #f8f9fa; }
+    .location-text { max-width: 900px; margin: 0 auto; font-size: 1.05rem; line-height: 1.8; white-space: pre-line; }
+
+    .faq-item { background: white; margin-bottom: 15px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 500; font-size: 1.1rem; transition: background 0.3s; }
+    .faq-question:hover { background: #f8f9fa; }
+    .faq-icon { font-size: 1.5rem; transition: transform 0.3s; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-answer-content { padding: 0 20px 20px; color: #666; line-height: 1.8; }
+    .faq-item.active .faq-answer { max-height: 1000px; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    .final-cta { background: linear-gradient(135deg, #1e8449 0%, #27ae60 100%); color: white; text-align: center; }
+    .final-cta .section-subtitle { color: rgba(255,255,255,0.9); }
+
+    footer { background: #2c3e50; color: white; padding: 60px 20px 30px; text-align: center; }
+    .footer-logo { font-size: 2rem; color: #27ae60; font-weight: 300; margin-bottom: 15px; }
+    .footer-description { color: #bdc3c7; margin-bottom: 30px; }
+    .footer-links { margin-bottom: 30px; } .footer-links h4 { color: #27ae60; margin-bottom: 10px; }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content p { font-size: 1rem; }
+      section { padding: 50px 15px; }
+      .section-title { font-size: 2rem; }
+      .carousel { height: 300px; }
+      .modal-content { margin: 20px; padding: 30px 20px; }
+      .hero-btn { display: none; } /* hide hero arrows on small screens for cleaner UI */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-carousel">
+      <div class="hero-carousel-slides" id="heroSlides">
+        <div class="hero-carousel-slide" style="background-image: url('https://i.imgur.com/TrMGomT.jpeg');"></div>
+        <div class="hero-carousel-slide" style="background-image: url('https://i.imgur.com/t8h3Gou.jpeg');"></div>
+        <div class="hero-carousel-slide" style="background-image: url('https://i.imgur.com/5Mck8Ar.jpeg');"></div>
+        <div class="hero-carousel-slide" style="background-image: url('https://i.imgur.com/WJk37iH.jpeg');"></div>
+      </div>
+
+      <button class="hero-btn prev" id="heroPrev" aria-label="Anterior">‹</button>
+      <button class="hero-btn next" id="heroNext" aria-label="Próximo">›</button>
+
+      <div class="hero-indicators" id="heroIndicators"></div>
+    </div>
+
+    <div class="hero-content">
+      <h1>Refúgio Exclusivo à Beira da Represa</h1>
+      <p>Duas casas privilegiadas cercadas por montanhas, água cristalina e a tranquilidade que você merece</p>
+      <a href="https://wa.me/5511947416919?text=Olá! Gostaria de saber mais sobre as casas em Joanópolis" class="btn">Reserve aqui</a>
+    </div>
+  </section>
+
+  <!-- CASAS -->
+  <section id="casas">
+    <div class="container">
+      <h2 class="section-title">Nossas Casas</h2>
+      <p class="section-subtitle">Escolha o refúgio perfeito para sua experiência inesquecível em meio à natureza</p>
+
+      <!-- casa 1 -->
+      <div class="house-card">
+        <div class="house-name">Casa João de Barro</div>
+
+        <div class="carousel" id="carousel1" onclick="openLightbox(1)">
+          <div class="carousel-slides" id="slides1">
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/9PvH3z3.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/ByS5GIe.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Riz8DKr.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/UA7PjIt.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/YrULmYm.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/HtaaRlB.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/MuSO6HT.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/MGJ4h6K.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/EOsTVEy.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/6hJrMRd.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/ikdoV4T.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/iwWiW9g.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/scRj43G.jpeg');"></div>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation(); moveSlide(1, -1)">‹</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation(); moveSlide(1, 1)">›</button>
+          <div class="carousel-indicators" id="indicators1"></div>
+        </div>
+
+        <div class="house-info">
+          <p class="house-location">Casa em Joanópolis, Brasil</p>
+          <p class="house-specs">4 hóspedes · 2 quartos · 2 camas · 2 banheiro</p>
+
+          <div class="divider"></div>
+
+          <div class="highlights">
+            <div class="highlight-item"><div class="highlight-icon">🏊</div><div class="highlight-text"><h3>Aproveite para dar um mergulho</h3><p>Este é um dos poucos lugares na região com piscina.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🔑</div><div class="highlight-text"><h3>Self check-in</h3><p>Faça check-in sozinho com o cofre de chaves.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🌿</div><div class="highlight-text"><h3>Paz e tranquilidade</h3><p>Os hóspedes dizem que esta acomodação fica em uma região tranquila.</p></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="about-space">
+            <h3>🏡 Sobre este espaço</h3>
+            <p class="about-preview">Desfrute de um pôr do sol inesquecível em uma casa acolhedora, cercada pela natureza e próxima à represa.
+
+Um lugar ideal para relaxar, desconectar e viver momentos especiais em família, casal ou entre amigos.</p>
+            <button class="show-more-btn" onclick="openModal('modal1')">Mostrar mais</button>
+          </div>
+
+          <div class="cta-btn-wrapper">
+            <a href="https://wa.me/5511947416919?text=Olá! Gostaria de conferir a disponibilidade da Casa João de Barro" class="btn btn-blue">Conferir disponibilidade</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CASA 2 -->
+      <div class="house-card">
+        <div class="house-name">Casa Aroeira</div>
+
+        <div class="carousel" id="carousel2" onclick="openLightbox(2)">
+          <div class="carousel-slides" id="slides2">
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/c8wNW96.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/bnLtn7u.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/OX7YjVc.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/D7Pl7J7.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/2jY6MNm.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Nrk628o.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/VSVr8ZX.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/vLn6vBd.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Wq9ytAy.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/usL42fA.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/4LnW1MX.jpeg');"></div>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation(); moveSlide(2, -1)">‹</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation(); moveSlide(2, 1)">›</button>
+          <div class="carousel-indicators" id="indicators2"></div>
+        </div>
+
+        <div class="house-info">
+          <p class="house-location">Casa em Joanópolis, Brasil</p>
+          <p class="house-specs">6 hóspedes · 3 quartos · 4 camas · 1 banheiro</p>
+
+          <div class="divider"></div>
+
+          <div class="highlights">
+            <div class="highlight-item"><div class="highlight-icon">🏊</div><div class="highlight-text"><h3>Aproveite para dar um mergulho</h3><p>Este é um dos poucos lugares na região com piscina.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🔑</div><div class="highlight-text"><h3>Self check-in</h3><p>Faça check-in sozinho com o cofre de chaves.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🌿</div><div class="highlight-text"><h3>Paz e tranquilidade</h3><p>Os hóspedes dizem que esta acomodação fica em uma região tranquila.</p></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="about-space">
+            <h3>🏡 Sobre este espaço</h3>
+            <p class="about-preview">Nossa casa fica em uma área tranquila, com acesso à represa através de área comum — incluindo rampa comunitária para descida de embarcações.
+
+Atenção: o nível da represa pode variar bastante ao longo do ano. Entre em contato para confirmar antes da sua estadia.</p>
+            <button class="show-more-btn" onclick="openModal('modal2')">Mostrar mais</button>
+          </div>
+
+          <div class="cta-btn-wrapper">
+            <a href="https://wa.me/5511947416919?text=Olá! Gostaria de conferir a disponibilidade da Casa Aroeira" class="btn btn-blue">Conferir disponibilidade</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Por Que Escolher a Vivenda Joanópolis?</h2>
+      <p class="section-subtitle">Cada detalhe foi pensado para proporcionar uma experiência única e memorável</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card"><div class="benefit-icon">🌿</div><h3>Natureza Preservada</h3><p>Cercado por mata nativa, represa cristalina e montanhas majestosas</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🔒</div><h3>Privacidade Total</h3><p>Espaços exclusivos para você e sua família, longe da agitação</p></div>
+        <div class="benefit-card"><div class="benefit-icon">👁️</div><h3>Vista Privilegiada</h3><p>Panoramas de tirar o fôlego em todas as direções</p></div>
+        <div class="benefit-card"><div class="benefit-icon">💧</div><h3>Acesso à Represa</h3><p>Mergulhe, reme e aproveite as águas calmas sempre que quiser</p></div>
+        <div class="benefit-card"><div class="benefit-icon">⛰️</div><h3>Serra do Lopo</h3><p>Próximo à famosa serra, ideal para aventuras e trilhas</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🌳</div><h3>Espaços Externos</h3><p>Varandas, decks, jardins e áreas de convivência ao ar livre</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🛋️</div><h3>Conforto Premium</h3><p>Ambientes aconchegantes com tudo que você precisa</p></div>
+        <div class="benefit-card"><div class="benefit-icon">✨</div><h3>Estrutura Completa</h3><p>Cozinha equipada, churrasqueira, wifi, TV e muito mais</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIAS -->
+  <section class="experiences-section">
+    <div class="container">
+      <h2 class="section-title">Experiências Inesquecíveis</h2>
+      <p class="section-subtitle">Viva momentos que ficarão gravados na memória para sempre</p>
+      <div class="experiences-grid">
+        <div class="experience-card"><div class="experience-icon">🌅</div><h3>Pôr do Sol Mágico</h3><p>Assista ao espetáculo diário do sol se pondo atrás das montanhas...</p></div>
+        <div class="experience-card"><div class="experience-icon">🏊</div><h3>Mergulhos Refrescantes</h3><p>Piscina com vista ou mergulho na represa? Você escolhe!</p></div>
+        <div class="experience-card"><div class="experience-icon">🔥</div><h3>Noites ao Redor da Fogueira</h3><p>Reúna a família sob o céu estrelado, conte histórias...</p></div>
+        <div class="experience-card"><div class="experience-icon">🛶</div><h3>Passeios de Caiaque</h3><p>Explore a represa no seu próprio ritmo.</p></div>
+        <div class="experience-card"><div class="experience-icon">🥾</div><h3>Trilhas e Caminhadas</h3><p>Opções para todos os níveis na Serra do Lopo.</p></div>
+        <div class="experience-card"><div class="experience-icon">🌙</div><h3>Noites Estreladas</h3><p>Longe da poluição luminosa, o céu revela milhares de estrelas...</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="location-section">
+    <div class="container">
+      <h2 class="section-title">Localização</h2>
+      <p class="section-subtitle">Joanópolis, a pérola da Serra da Mantiqueira</p>
+      <div class="location-text">Joanópolis - SP é uma cidade encantadora situada na Serra da Mantiqueira, conhecida por suas paisagens naturais deslumbrantes, clima agradável de montanha e a tranquilidade típica do interior paulista. Com seus 12 mil habitantes, Joanópolis preserva o charme das cidades pequenas onde todos se conhecem e o ritmo de vida é desacelerado.
+
+A cidade é famosa pela Represa de Jaguari, que oferece um cenário espetacular de águas calmas cercadas por montanhas verdes. É o destino perfeito para quem busca desconectar da correria urbana e reconectar com a natureza.
+
+Distâncias:
+📍 São Paulo: 110 km (aproximadamente 2h de viagem)
+📍 Campinas: 90 km (aproximadamente 1h30)
+📍 Bragança Paulista: 35 km (aproximadamente 40 minutos)
+📍 Atibaia: 50 km (aproximadamente 1h)
+
+📌 Atenção: As casas estão localizadas em área de natureza preservada, com acesso por estrada de terra bem conservada. Recomendamos veículos com boa altura, especialmente em dias de chuva. O trajeto faz parte da experiência de desconexão e contato com o ambiente rural.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      <p class="section-subtitle">Tire suas dúvidas antes de fazer sua reserva</p>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🐾 Aceitam pets?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim! Amamos animais e aceitamos pets de pequeno e médio porte mediante consulta prévia. Cobramos uma taxa adicional pela limpeza especial necessária. Pedimos que não deixem o pet sozinho dentro da casa, não permitam que façam necessidades dentro da casa, e que não entrem na piscina. A casa é totalmente cercada, o que proporciona segurança para você e seu pet.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>💧 Como é o acesso à represa?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Ambas as casas possuem acesso à represa através de área comum. A Pousada Aroeiro tem rampa comunitária para descida de embarcações. O nível da represa varia ao longo do ano conforme o período de chuvas. Recomendamos consultar antes da sua reserva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🎒 O que devo levar?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Casas equipadas com cozinha, utensílios, TV, wifi e churrasqueira. Recomendamos trazer roupas de cama e banho (não fornecemos), alimentos e bebidas, protetor solar e repelente.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🛏️ Roupas de cama e toalhas estão incluídas?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Não fornecemos roupas de cama e banho, mas disponibilizamos travesseiros com capas higienizadas e alguns cobertores.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>📶 Tem internet wifi?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim, ambas as casas possuem wifi. A João de Barro tem fibra óptica; A Aroeira tem internet via rádio, que pode oscilar em dias de chuva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🚗 A estrada de terra é segura?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim. Recomendamos veículos com boa altura, especialmente em dias de chuva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🔐 As casas são seguras?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Casas totalmente cercadas com self check-in via cofre de chaves.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>👨‍👩‍👧‍👦 Capacidade máxima?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">João de Barro: até 4 hóspedes. Aroeira: até 6 hóspedes.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>⏰ Check-in / Check-out?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Check-in sugerido a partir das 15h; check-out até 12h. Self check-in facilita o horário.</div></div></div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="section-title">Pronto para Viver Esta Experiência?</h2>
+      <p class="section-subtitle">Reserve agora sua estadia e descubra o verdadeiro significado de descanso e conexão com a natureza</p>
+      <a href="https://wa.me/5511947416919?text=Olá! Quero reservar minha estadia na Vivenda Joanópolis" class="btn btn-white">Reservar pelo WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Vivenda Joanópolis</div>
+      <p class="footer-description">Refúgio exclusivo em Joanópolis - SP<br/>Onde a natureza encontra o conforto</p>
+      <div class="footer-links"><h4>Entre em contato:</h4><p>📱 WhatsApp</p><p>✉️ Email</p></div>
+      <div class="footer-links"><h4>Siga-nos:</h4><p>📷 Instagram</p><p>👍 Facebook</p></div>
+      <div class="footer-copyright"><p>© 2025 Vivenda Joanópolis. Todos os direitos reservados.</p><p>Desenvolvido com 💚 para amantes da natureza</p></div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOXS -->
+  <div id="lightbox1" class="lightbox" onclick="closeLightbox(1)">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox(1)">×</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-btn prev" onclick="moveLightboxSlide(1, -1)">‹</button>
+      <img id="lightbox-image1" class="lightbox-image" src="" alt="Imagem em tela cheia" />
+      <button class="lightbox-btn next" onclick="moveLightboxSlide(1, 1)">›</button>
+    </div>
+  </div>
+
+  <div id="lightbox2" class="lightbox" onclick="closeLightbox(2)">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox(2)">×</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-btn prev" onclick="moveLightboxSlide(2, -1)">‹</button>
+      <img id="lightbox-image2" class="lightbox-image" src="" alt="Imagem em tela cheia" />
+      <button class="lightbox-btn next" onclick="moveLightboxSlide(2, 1)">›</button>
+    </div>
+  </div>
+
+  <!-- MODAIS -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal1')">×</button>
+      <div class="modal-text">
+        <h3>Pousada João de Barro — Detalhes</h3>
+        <p>Desfrute de um pôr do sol inesquecível em uma casa acolhedora, cercada pela natureza e próxima à represa.</p>
+        <p>Um lugar ideal para relaxar, desconectar e viver momentos especiais em família, casal ou entre amigos.</p>
+        <p>A casa é privativa, totalmente cercada e equipada para que sua estadia seja confortável, tranquila e memorável.</p>
+
+        <p><strong>⭐ O que oferecemos</strong></p>
+        <ul>
+          <li>Piscina privativa</li>
+          <li>Área de fogueira</li>
+          <li>Churrasqueira</li>
+          <li>Cozinha completa</li>
+          <li>Wi-Fi fibra</li>
+          <li>TV com Netflix e Amazon Prime</li>
+          <li>Calefator</li>
+          <li>Casa totalmente cercada</li>
+          <li>Pet friendly (com regras)</li>
+        </ul>
+        <p><em>Obs.: Não fornecemos roupas de cama e banho.</em></p>
+
+        <p><strong>🛏️ O espaço</strong></p>
+        <ul>
+          <li>2 suítes confortáveis</li>
+          <li>Sofá extensível que vira cama de casal</li>
+          <li>Cozinha equipada com os principais utensílios</li>
+          <li>Berço desmontável disponível sob solicitação (até 2 anos)</li>
+          <li>Jardim em implantação (algumas áreas externas ainda descampadas)</li>
+        </ul>
+
+        <p><strong>📍 Localização</strong></p>
+        <ul>
+          <li>15 km do centro de Joanópolis</li>
+          <li>20 min da Serra do Lopo</li>
+          <li>30 min das cachoeiras</li>
+          <li>2 km de estrada de terra até a casa</li>
+        </ul>
+        <p>A região é rural e tranquila, sem mercados ou comércios por perto. Recomendamos trazer tudo o que precisar para sua estadia.</p>
+
+        <p><strong>🔑 Acesso do hóspede</strong></p>
+        <p>A casa inteira é de uso exclusivo dos hóspedes, exceto uma pequena despensa trancada.</p>
+
+        <p><strong>📌 Regras importantes</strong></p>
+        <ul>
+          <li>Não sentar ou deitar no sofá/camas com roupas molhadas.</li>
+          <li>Não usar taças ou copos de vidro na área da piscina.</li>
+          <li>Não pular na piscina (profundidade: 1,20 m + 1 degrau).</li>
+          <li>No checkout, deixar o lixo na caçamba da estrada (não há coleta na porta).</li>
+        </ul>
+
+        <p><strong>🐾 Sobre pets</strong></p>
+        <p>Seu pet é bem-vindo! Pedimos apenas:</p>
+        <ul>
+          <li>Não deixar o pet sozinho dentro da casa.</li>
+          <li>Não permitir que faça necessidades dentro da casa.</li>
+          <li>Pets não podem entrar na piscina.</li>
+          <li>Danos a sofás/camas têm taxa de R$ 350 por móvel ou valor total de reposição.</li>
+        </ul>
+        <p>A taxa de pet cobre a limpeza detalhada após a sua estadia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal2')">×</button>
+      <div class="modal-text">
+        <h3>Pousada Aroeira — Detalhes</h3>
+
+        <p>Nossa casa fica em uma área tranquila, com acesso à represa através de área comum — incluindo rampa comunitária para descida de embarcações.</p>
+
+        <p>Atenção: o nível da represa pode variar bastante ao longo do ano. Entre em contato para confirmar antes da sua estadia.</p>
+
+        <p>Você também conta com piscina privativa, área de fogueira exclusiva, cozinha completa e churrasqueira na varanda — tudo pensado para que sua experiência seja relaxante e confortável.</p>
+
+        <p><strong>⭐ Destaques do espaço</strong></p>
+        <ul>
+          <li>Piscina privativa</li>
+          <li>Acesso à represa (área comum)</li>
+          <li>Rampa comunitária para embarcações</li>
+          <li>Possibilidade de pesca</li>
+          <li>Aluguel de caiaques para toda a estadia (consulte)</li>
+          <li>Área de fogueira privativa</li>
+          <li>Cozinha completa</li>
+          <li>Churrasqueira na varanda</li>
+          <li>TV com Netflix e Amazon Prime</li>
+          <li>Wi-Fi via rádio (bom, porém pode oscilar em dias de chuva/vento)</li>
+          <li>Ambiente totalmente cercado</li>
+          <li>Pet friendly (com regras)</li>
+        </ul>
+
+        <p><strong>📍 Localização</strong></p>
+        <ul>
+          <li>20 min da Serra do Lopo</li>
+          <li>30 min das cachoeiras</li>
+          <li>4 km de estrada de terra até a casa</li>
+        </ul>
+
+        <p><strong>🛏️ O espaço</strong></p>
+        <p>Acomoda até 6 hóspedes sem taxa extra.</p>
+        <p>A casa possui:</p>
+        <ul>
+          <li>3 quartos</li>
+          <li>2 com cama de casal</li>
+          <li>1 com 2 camas de solteiro</li>
+          <li>Sala com TV via internet</li>
+          <li>Cozinha equipada com todos os utensílios necessários</li>
+          <li>1 banheiro com chuveiro (aquecimento a gás e elétrico)</li>
+        </ul>
+
+        <p>Não fornecemos roupas de cama e banho, mas disponibilizamos:</p>
+        <ul>
+          <li>Travesseiros com capas higienizadas</li>
+          <li>Alguns cobertores</li>
+        </ul>
+
+        <p>O quintal possui um amplo gramado, e logo abaixo (área comum) está a represa, onde é possível remar, pescar ou levar seu barco/lancha/jetski — desde que o nível da água permita.</p>
+
+        <p><strong>Importante:</strong> Antes da sua reserva, consulte o nível da represa.</p>
+
+        <p>Há também um playground infantil na área da represa (fora da propriedade).</p>
+
+        <p><strong>🔑 Acesso do hóspede</strong></p>
+        <p>Toda a casa e quintal são de uso exclusivo dos hóspedes.<br>A rampa para embarcações e a margem da represa são de área comum.</p>
+
+        <p><strong>🐾 Pets</strong></p>
+        <p>Pets são bem-vindos, e cobramos uma taxa adicional pela limpeza especial.</p>
+        <p>Regras importantes:</p>
+        <ul>
+          <li>Pets não podem entrar nos quartos, camas ou sofás</li>
+          <li>Não podem fazer necessidades dentro da casa</li>
+          <li>Sujeito a multa em caso de sujidade ou danos a camas/sofás</li>
+          <li>A casa é totalmente cercada, ideal para tutores que desejam segurança</li>
+        </ul>
+
+        <p><strong>📌 Outras observações importantes</strong></p>
+
+        <p><strong>🚮 Lixo</strong><br>
+        Pedimos que o lixo seja deixado na caçamba da estrada (a 1 km da casa).<br>
+        Não há coleta na região e a faxineira não tem como transportar.</p>
+
+        <p><strong>📶 Sinal e internet</strong><br>
+        Algumas operadoras não têm sinal de celular na casa.<br>
+        A internet via rádio pode oscilar devido à mata ao redor e mudanças climáticas.</p>
+
+        <p><strong>🌊 Sobre a represa</strong><br>
+        O nível varia conforme o período de chuvas.<br>
+        Em algumas épocas não é possível descer embarcações, apenas remar ou nadar.<br>
+        Caiaques podem ser alugados separadamente (consulte valores).</p>
+
+        <p><strong>🛣️ Localização</strong><br>
+        A casa fica em área rural, com 4 km de estrada de terra.<br>
+        O lazer principal: represa, caiaques, área de fogueira, piscina e churrasqueira.</p>
+
+        <p>Se você busca natureza, privacidade, tranquilidade e uma experiência completa à beira da represa, será um prazer receber você! 🌿✨</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(el) { el.parentElement.classList.toggle('active'); }
+
+    // Modal controls
+    function openModal(id) { const m = document.getElementById(id); if (m) m.classList.add('active'); }
+    function closeModal(id) { const m = document.getElementById(id); if (m) m.classList.remove('active'); }
+
+    // Utility: extract URL from CSS background-image
+    function extractUrl(bg) {
+      if (!bg) return '';
+      const m = bg.match(/url\((?:'|")?(.*?)(?:'|")?\)/);
+      return m ? m[1] : bg.replace(/(^url\()|(\)$)|["']/g, '');
+    }
+
+    // Carousels initialization: collects images, sets indicators, exposes move/get functions and auto-advance.
+    (function initCarousels(){
+      window.__carousels = window.__carousels || {};
+      const carouselEls = document.querySelectorAll('.carousel');
+      carouselEls.forEach(function(carouselEl){
+        const idAttr = carouselEl.id || '';
+        const idMatch = idAttr.match(/carousel(\d+)/);
+        if (!idMatch) return;
+        const cid = parseInt(idMatch[1], 10);
+        const slidesEl = carouselEl.querySelector('.carousel-slides');
+        if (!slidesEl) return;
+        const slides = Array.from(slidesEl.children);
+        const images = slides.map(s => {
+          const inline = s.style.backgroundImage;
+          const computed = getComputedStyle(s).backgroundImage;
+          return extractUrl(inline || computed);
+        });
+        const indicatorsEl = document.getElementById('indicators' + cid);
+        let current = 0;
+        function update(){
+          slidesEl.style.transform = 'translateX(' + (-current * 100) + '%)';
+          if (indicatorsEl) {
+            Array.from(indicatorsEl.children).forEach((d,i) => d.classList.toggle('active', i===current));
+          }
+        }
+        // create indicators
+        if (indicatorsEl) {
+          indicatorsEl.innerHTML = '';
+          images.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+            dot.onclick = function(e){ e.stopPropagation(); current = idx; update(); };
+            indicatorsEl.appendChild(dot);
+          });
+        }
+        window.__carousels[cid] = { slidesEl, slides, images, get current(){ return current; }, set current(v){ current = v; }, update };
+        // auto advance
+        setInterval(function(){
+          if (!window.__carousels[cid]) return;
+          current = (current + 1) % images.length;
+          update();
+        }, 6000 + cid * 300);
+        // initial render
+        update();
+      });
+
+      // exposed functions
+      window.moveSlide = function(carouselId, direction){
+        const c = window.__carousels[carouselId];
+        if (!c) return;
+        const len = c.images.length;
+        let next = (c.current + direction + len) % len;
+        c.current = next;
+        c.update();
+      };
+      window.getCurrentSlide = function(carouselId){
+        const c = window.__carousels[carouselId];
+        if (!c) return '';
+        return c.images[c.current];
+      };
+    })();
+
+    // HERO carousel initialization: indicators, arrows, auto-advance and pause on hover
+    (function initHeroCarousel(){
+      const slidesEl = document.getElementById('heroSlides');
+      if (!slidesEl) return;
+      const slides = Array.from(slidesEl.children);
+      const indicatorsEl = document.getElementById('heroIndicators');
+      const prevBtn = document.getElementById('heroPrev');
+      const nextBtn = document.getElementById('heroNext');
+      let current = 0;
+      function update(){
+        slidesEl.style.transform = 'translateX(' + (-current * 100) + '%)';
+        if (indicatorsEl) {
+          Array.from(indicatorsEl.children).forEach((d,i) => d.classList.toggle('active', i===current));
+        }
+      }
+      // create indicators
+      if (indicatorsEl) {
+        indicatorsEl.innerHTML = '';
+        slides.forEach((_, idx) => {
+          const dot = document.createElement('div');
+          dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+          dot.onclick = function(e){ e.stopPropagation(); current = idx; update(); };
+          indicatorsEl.appendChild(dot);
+        });
+      }
+      if (prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); current = (current - 1 + slides.length) % slides.length; update(); });
+      if (nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); current = (current + 1) % slides.length; update(); });
+
+      let timer = setInterval(function(){
+        current = (current + 1) % slides.length;
+        update();
+      }, 5000);
+
+      // pause on hover/focus
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        heroSection.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        heroSection.addEventListener('mouseleave', function(){ timer = setInterval(function(){ current = (current + 1) % slides.length; update(); }, 5000); });
+        // also pause when hero receives focus (accessibility)
+        heroSection.addEventListener('focusin', function(){ clearInterval(timer); });
+        heroSection.addEventListener('focusout', function(){ timer = setInterval(function(){ current = (current + 1) % slides.length; update(); }, 5000); });
+      }
+
+      // initial render
+      update();
+    })();
+
+    // Lightbox controls: open with the carousel's current image; navigate images and sync carousel
+    window.__lightboxIndex = window.__lightboxIndex || {};
+    function openLightbox(id, imgSrc){
+      const lb = document.getElementById('lightbox' + id);
+      const imgEl = document.getElementById('lightbox-image' + id);
+      const carousel = window.__carousels && window.__carousels[id];
+      const source = imgSrc || (carousel ? carousel.images[carousel.current] : '');
+      if (imgEl) imgEl.src = source || '';
+      if (lb) lb.classList.add('active');
+      if (carousel) window.__lightboxIndex[id] = carousel.current || 0;
+    }
+    function closeLightbox(id){
+      const lb = document.getElementById('lightbox' + id);
+      if (lb) lb.classList.remove('active');
+    }
+    function moveLightboxSlide(id, direction){
+      const carousel = window.__carousels && window.__carousels[id];
+      if (!carousel) return;
+      let idx = window.__lightboxIndex[id] ?? carousel.current;
+      const len = carousel.images.length;
+      idx = (idx + direction + len) % len;
+      window.__lightboxIndex[id] = idx;
+      // update lightbox image
+      const imgEl = document.getElementById('lightbox-image' + id);
+      if (imgEl) imgEl.src = carousel.images[idx];
+      // sync carousel UI as well
+      carousel.current = idx;
+      carousel.update();
+    }
+
+    // prevent propagation for carousel buttons
+    document.addEventListener('click', function(e){
+      if (e.target && e.target.matches('.carousel-btn')) e.stopPropagation();
+    });
+  </script>
+</body>
+</html>

@@ -123,85 +123,6 @@
     .footer-description { color: #bdc3c7; margin-bottom: 30px; }
     .footer-links { margin-bottom: 30px; } .footer-links h4 { color: #27ae60; margin-bottom: 10px; }
 
-    /* Reservation card styles (added to CTA) - unchanged structure but refined label styling */
-    .reserve-card { background: rgba(255,255,255,0.98); padding: 22px; border-radius: 12px; max-width: 540px; margin: 20px auto; box-shadow: 0 8px 30px rgba(0,0,0,0.12); color: #222; }
-    .reserve-card h3 { font-size: 1.4rem; margin-bottom: 14px; font-weight: 700; color: #2c3e50; text-align: left; }
-    .reserve-row { display: flex; gap: 12px; margin-bottom: 12px; }
-    .reserve-row label { flex: 1; display: flex; flex-direction: column; }
-    /* New refined label typography */
-    .field-label {
-      font-size: 0.78rem;
-      color: #7f8c8d;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    /* Beautified inputs that mimic the mock */
-    .reserve-row input[type="text"], .reserve-row input[type="date"], .reserve-row select {
-      padding: 14px 44px 14px 18px;
-      border-radius: 12px;
-      border: 1px solid #ececec;
-      margin-top: 0;
-      font-size: 1rem;
-      background: #f8f8f8;
-      color: #222;
-      height: 52px;
-      -webkit-appearance: none;
-      appearance: none;
-      outline: none;
-      box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
-      transition: box-shadow 0.12s ease, transform 0.08s ease;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa3a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-size: 18px 18px;
-    }
-    .reserve-row input[type="text"]:focus, .reserve-row select:focus {
-      box-shadow: 0 6px 18px rgba(39,174,96,0.08);
-      transform: translateY(-1px);
-    }
-    .reserve-row input[type="text"]::placeholder { color:#9aa3a6; }
-
-    .reserve-actions { text-align: center; margin-top: 12px; }
-    .reserve-error { color: #c0392b; min-height: 1.2rem; margin-top: 12px; text-align: center; font-weight:600; }
-    .reserve-card p.helper { margin: 14px 0 0; color: #95a5a6; font-size: 0.95rem; text-align: center; }
-
-    /* Inline calendar styles inside the card */
-    .inline-calendar { margin-top: 12px; background: transparent; display: none; } /* hidden by default */
-    .inline-calendar.active { display: block; }
-    .calendar-controls-inline { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 10px; }
-    .calendar-controls-inline .month-title { font-weight:600; color:#333; }
-    .calendar-grid-inline { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top:4px; }
-    .calendar-weekday-inline { text-align: center; font-weight:600; font-size:0.75rem; color:#9aa3a6; padding-bottom:4px; }
-    .calendar-day-inline { height:40px; display:flex; align-items:center; justify-content:center; border-radius:8px; background:#fff; color:#333; border:1px solid #f0f0f0; }
-    .calendar-day-inline.outside { background: transparent; border: none; }
-    .calendar-day-inline.available { background:#fff; color:#333; cursor:pointer; box-shadow: inset 0 0 0 2px rgba(0,0,0,0.02); }
-    .calendar-day-inline.reserved { background:#f1f2f3; color:#9ea3a6; }
-    .calendar-day-inline.today { border:2px solid #2980b9; }
-    .calendar-day-inline.selected { background:#27ae60; color:#fff; box-shadow: 0 8px 18px rgba(39,174,96,0.18); }
-
-    /* Big coral check availability button (matches provided mock) */
-    .reserve-cta-btn {
-      display: inline-block;
-      width: 92%;
-      max-width: 460px;
-      margin: 18px auto 6px;
-      padding: 18px 28px;
-      text-align: center;
-      background: linear-gradient(180deg,#ff6b66,#ff5a57);
-      color: white;
-      font-size: 1.25rem;
-      border-radius: 48px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 24px 48px rgba(255,90,87,0.18), inset 0 -6px 12px rgba(0,0,0,0.04);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .reserve-cta-btn:active { transform: translateY(2px); box-shadow: 0 18px 40px rgba(255,90,87,0.14); }
-    .whatsapp-cta { display:inline-block; margin-top:10px; background:#25D366; color:white; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600; }
-
     @media (max-width: 768px) {
       .hero-content h1 { font-size: 2rem; }
       .hero-content p { font-size: 1rem; }
@@ -210,9 +131,6 @@
       .carousel { height: 300px; }
       .modal-content { margin: 20px; padding: 30px 20px; }
       .hero-btn { display: none; } /* hide hero arrows on small screens for cleaner UI */
-      .reserve-row { flex-direction: column; }
-      .calendar-modal-content { margin: 20px; padding: 16px; }
-      .reserve-cta-btn { width: 100%; font-size: 1.05rem; padding: 14px; }
     }
   </style>
 </head>
@@ -241,76 +159,205 @@
     </div>
   </section>
 
-  <!-- POUSADAS (omitted here for brevity in this preview) -->
-  <!-- ... keep the rest of the page content identical to your previous file (houses, benefits, experiences, FAQ) ... -->
+  <!-- POUSADAS -->
+  <section id="casas">
+    <div class="container">
+      <h2 class="section-title">Nossas Casas</h2>
+      <p class="section-subtitle">Escolha o refúgio perfeito para sua experiência inesquecível em meio à natureza</p>
+
+      <!-- POUSADA 1 -->
+      <div class="house-card">
+        <div class="house-name">Casa João de Barro</div>
+
+        <div class="carousel" id="carousel1" onclick="openLightbox(1)">
+          <div class="carousel-slides" id="slides1">
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/9PvH3z3.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/ByS5GIe.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Riz8DKr.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/UA7PjIt.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/YrULmYm.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/HtaaRlB.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/MuSO6HT.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/MGJ4h6K.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/EOsTVEy.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/6hJrMRd.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/ikdoV4T.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/iwWiW9g.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/scRj43G.jpeg');"></div>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation(); moveSlide(1, -1)">‹</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation(); moveSlide(1, 1)">›</button>
+          <div class="carousel-indicators" id="indicators1"></div>
+        </div>
+
+        <div class="house-info">
+          <p class="house-location">Casa em Joanópolis, Brasil</p>
+          <p class="house-specs">4 hóspedes · 2 quartos · 2 camas · 2 banheiro</p>
+
+          <div class="divider"></div>
+
+          <div class="highlights">
+            <div class="highlight-item"><div class="highlight-icon">🏊</div><div class="highlight-text"><h3>Aproveite para dar um mergulho</h3><p>Este é um dos poucos lugares na região com piscina.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🔑</div><div class="highlight-text"><h3>Self check-in</h3><p>Faça check-in sozinho com o cofre de chaves.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🌿</div><div class="highlight-text"><h3>Paz e tranquilidade</h3><p>Os hóspedes dizem que esta acomodação fica em uma região tranquila.</p></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="about-space">
+            <h3>🏡 Sobre este espaço</h3>
+            <p class="about-preview">Desfrute de um pôr do sol inesquecível em uma casa acolhedora, cercada pela natureza e próxima à represa.
+
+Um lugar ideal para relaxar, desconectar e viver momentos especiais em família, casal ou entre amigos.</p>
+            <button class="show-more-btn" onclick="openModal('modal1')">Mostrar mais</button>
+          </div>
+
+          <div class="cta-btn-wrapper">
+            <a href="https://wa.me/5511947416919?text=Olá! Gostaria de conferir a disponibilidade da Pousada João de Barro" class="btn btn-blue">Conferir disponibilidade</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- POUSADA 2 -->
+      <div class="house-card">
+        <div class="house-name">Casa Aroeira</div>
+
+        <div class="carousel" id="carousel2" onclick="openLightbox(2)">
+          <div class="carousel-slides" id="slides2">
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/c8wNW96.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/bnLtn7u.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/OX7YjVc.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/D7Pl7J7.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/2jY6MNm.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Nrk628o.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/VSVr8ZX.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/vLn6vBd.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/Wq9ytAy.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/usL42fA.jpeg');"></div>
+            <div class="carousel-slide" style="background-image: url('https://i.imgur.com/4LnW1MX.jpeg');"></div>
+          </div>
+          <button class="carousel-btn prev" onclick="event.stopPropagation(); moveSlide(2, -1)">‹</button>
+          <button class="carousel-btn next" onclick="event.stopPropagation(); moveSlide(2, 1)">›</button>
+          <div class="carousel-indicators" id="indicators2"></div>
+        </div>
+
+        <div class="house-info">
+          <p class="house-location">Casa em Joanópolis, Brasil</p>
+          <p class="house-specs">6 hóspedes · 3 quartos · 4 camas · 1 banheiro</p>
+
+          <div class="divider"></div>
+
+          <div class="highlights">
+            <div class="highlight-item"><div class="highlight-icon">🏊</div><div class="highlight-text"><h3>Aproveite para dar um mergulho</h3><p>Este é um dos poucos lugares na região com piscina.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🔑</div><div class="highlight-text"><h3>Self check-in</h3><p>Faça check-in sozinho com o cofre de chaves.</p></div></div>
+            <div class="highlight-item"><div class="highlight-icon">🌿</div><div class="highlight-text"><h3>Paz e tranquilidade</h3><p>Os hóspedes dizem que esta acomodação fica em uma região tranquila.</p></div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="about-space">
+            <h3>🏡 Sobre este espaço</h3>
+            <p class="about-preview">Nossa casa fica em uma área tranquila, com acesso à represa através de área comum — incluindo rampa comunitária para descida de embarcações.
+
+Atenção: o nível da represa pode variar bastante ao longo do ano. Entre em contato para confirmar antes da sua estadia.</p>
+            <button class="show-more-btn" onclick="openModal('modal2')">Mostrar mais</button>
+          </div>
+
+          <div class="cta-btn-wrapper">
+            <a href="https://wa.me/5511947416919?text=Olá! Gostaria de conferir a disponibilidade da Pousada Aroeiro" class="btn btn-blue">Conferir disponibilidade</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="benefits-section">
+    <div class="container">
+      <h2 class="section-title">Por Que Escolher a Vivenda Joanópolis?</h2>
+      <p class="section-subtitle">Cada detalhe foi pensado para proporcionar uma experiência única e memorável</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card"><div class="benefit-icon">🌿</div><h3>Natureza Preservada</h3><p>Cercado por mata nativa, represa cristalina e montanhas majestosas</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🔒</div><h3>Privacidade Total</h3><p>Espaços exclusivos para você e sua família, longe da agitação</p></div>
+        <div class="benefit-card"><div class="benefit-icon">👁️</div><h3>Vista Privilegiada</h3><p>Panoramas de tirar o fôlego em todas as direções</p></div>
+        <div class="benefit-card"><div class="benefit-icon">💧</div><h3>Acesso à Represa</h3><p>Mergulhe, reme e aproveite as águas calmas sempre que quiser</p></div>
+        <div class="benefit-card"><div class="benefit-icon">⛰️</div><h3>Serra do Lopo</h3><p>Próximo à famosa serra, ideal para aventuras e trilhas</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🌳</div><h3>Espaços Externos</h3><p>Varandas, decks, jardins e áreas de convivência ao ar livre</p></div>
+        <div class="benefit-card"><div class="benefit-icon">🛋️</div><h3>Conforto Premium</h3><p>Ambientes aconchegantes com tudo que você precisa</p></div>
+        <div class="benefit-card"><div class="benefit-icon">✨</div><h3>Estrutura Completa</h3><p>Cozinha equipada, churrasqueira, wifi, TV e muito mais</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIAS -->
+  <section class="experiences-section">
+    <div class="container">
+      <h2 class="section-title">Experiências Inesquecíveis</h2>
+      <p class="section-subtitle">Viva momentos que ficarão gravados na memória para sempre</p>
+      <div class="experiences-grid">
+        <div class="experience-card"><div class="experience-icon">🌅</div><h3>Pôr do Sol Mágico</h3><p>Assista ao espetáculo diário do sol se pondo atrás das montanhas...</p></div>
+        <div class="experience-card"><div class="experience-icon">🏊</div><h3>Mergulhos Refrescantes</h3><p>Piscina com vista ou mergulho na represa? Você escolhe!</p></div>
+        <div class="experience-card"><div class="experience-icon">🔥</div><h3>Noites ao Redor da Fogueira</h3><p>Reúna a família sob o céu estrelado, conte histórias...</p></div>
+        <div class="experience-card"><div class="experience-icon">🛶</div><h3>Passeios de Caiaque</h3><p>Explore a represa no seu próprio ritmo.</p></div>
+        <div class="experience-card"><div class="experience-icon">🥾</div><h3>Trilhas e Caminhadas</h3><p>Opções para todos os níveis na Serra do Lopo.</p></div>
+        <div class="experience-card"><div class="experience-icon">🌙</div><h3>Noites Estreladas</h3><p>Longe da poluição luminosa, o céu revela milhares de estrelas...</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="location-section">
+    <div class="container">
+      <h2 class="section-title">Localização</h2>
+      <p class="section-subtitle">Joanópolis, a pérola da Serra da Mantiqueira</p>
+      <div class="location-text">Joanópolis - SP é uma cidade encantadora situada na Serra da Mantiqueira, conhecida por suas paisagens naturais deslumbrantes, clima agradável de montanha e a tranquilidade típica do interior paulista. Com seus 12 mil habitantes, Joanópolis preserva o charme das cidades pequenas onde todos se conhecem e o ritmo de vida é desacelerado.
+
+A cidade é famosa pela Represa de Jaguari, que oferece um cenário espetacular de águas calmas cercadas por montanhas verdes. É o destino perfeito para quem busca desconectar da correria urbana e reconectar com a natureza.
+
+Distâncias:
+📍 São Paulo: 110 km (aproximadamente 2h de viagem)
+📍 Campinas: 90 km (aproximadamente 1h30)
+📍 Bragança Paulista: 35 km (aproximadamente 40 minutos)
+📍 Atibaia: 50 km (aproximadamente 1h)
+
+📌 Atenção: As casas estão localizadas em área de natureza preservada, com acesso por estrada de terra bem conservada. Recomendamos veículos com boa altura, especialmente em dias de chuva. O trajeto faz parte da experiência de desconexão e contato com o ambiente rural.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      <p class="section-subtitle">Tire suas dúvidas antes de fazer sua reserva</p>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🐾 Aceitam pets?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim! Amamos animais e aceitamos pets de pequeno e médio porte mediante consulta prévia. Cobramos uma taxa adicional pela limpeza especial necessária. Pedimos que não deixem o pet sozinho dentro da casa, não permitam que façam necessidades dentro da casa, e que não entrem na piscina. A casa é totalmente cercada, o que proporciona segurança para você e seu pet.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>💧 Como é o acesso à represa?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Ambas as casas possuem acesso à represa através de área comum. A Pousada Aroeiro tem rampa comunitária para descida de embarcações. O nível da represa varia ao longo do ano conforme o período de chuvas. Recomendamos consultar antes da sua reserva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🎒 O que devo levar?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Casas equipadas com cozinha, utensílios, TV, wifi e churrasqueira. Recomendamos trazer roupas de cama e banho (não fornecemos), alimentos e bebidas, protetor solar e repelente.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🛏️ Roupas de cama e toalhas estão incluídas?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Não fornecemos roupas de cama e banho, mas disponibilizamos travesseiros com capas higienizadas e alguns cobertores.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>📶 Tem internet wifi?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim, ambas as casas possuem wifi. A João de Barro tem fibra óptica; A Aroeira tem internet via rádio, que pode oscilar em dias de chuva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🚗 A estrada de terra é segura?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Sim. Recomendamos veículos com boa altura, especialmente em dias de chuva.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>🔐 As casas são seguras?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Casas totalmente cercadas com self check-in via cofre de chaves.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>👨‍👩‍👧‍👦 Capacidade máxima?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">João de Barro: até 4 hóspedes. Aroeira: até 6 hóspedes.</div></div></div>
+
+      <div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span>⏰ Check-in / Check-out?</span><span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-content">Check-in sugerido a partir das 15h; check-out até 12h. Self check-in facilita o horário.</div></div></div>
+    </div>
+  </section>
 
   <!-- CTA FINAL -->
   <section class="final-cta">
     <div class="container">
       <h2 class="section-title">Pronto para Viver Esta Experiência?</h2>
       <p class="section-subtitle">Reserve agora sua estadia e descubra o verdadeiro significado de descanso e conexão com a natureza</p>
-
-      <!-- Reserve card with date inputs, inline calendar, guests and availability button (labels refined) -->
-      <div class="reserve-card" aria-label="Formulário de reserva">
-          <h3>Escolha as datas para conferir disponibilidade</h3>
-
-          <div class="reserve-row">
-              <label for="checkin" class="field">
-                  <span class="field-label">Check‑in</span>
-                  <input type="text" id="checkin" name="checkin" aria-label="Check-in" placeholder="Selecione o check-in" readonly data-iso="">
-              </label>
-              <label for="checkout" class="field">
-                  <span class="field-label">Check‑out</span>
-                  <input type="text" id="checkout" name="checkout" aria-label="Check-out" placeholder="Selecione o check-out" readonly data-iso="">
-              </label>
-          </div>
-
-          <div class="reserve-row" style="margin-bottom:0;">
-              <label for="guests">
-                  <span class="field-label">Hóspedes</span>
-                  <select id="guests" name="guests" aria-label="Número de hóspedes">
-                      <option value="1">1 hóspede</option>
-                      <option value="2">2 hóspedes</option>
-                      <option value="3">3 hóspedes</option>
-                      <option value="4">4 hóspedes</option>
-                      <option value="5">5 hóspedes</option>
-                      <option value="6">6 hóspedes</option>
-                      <option value="7">7 hóspedes</option>
-                      <option value="8">8 hóspedes</option>
-                      <option value="9">9 hóspedes</option>
-                      <option value="10">10 hóspedes</option>
-                      <option value="11">11 hóspedes</option>
-                      <option value="12">12 hóspedes</option>
-                  </select>
-              </label>
-          </div>
-
-          <!-- Inline calendar placed below the date inputs (visual + functional) - hidden until click -->
-          <div class="inline-calendar" id="inlineCalendar" aria-hidden="true">
-            <div class="calendar-controls-inline">
-              <button id="inlinePrev" class="btn btn-blue" type="button" aria-label="Mês anterior">‹</button>
-              <div class="month-title" id="inlineMonthTitle" aria-live="polite">Mês</div>
-              <button id="inlineNext" class="btn btn-blue" type="button" aria-label="Próximo mês">›</button>
-            </div>
-            <div class="calendar-grid-inline" id="inlineCalendarGrid" role="grid" aria-label="Calendário de disponibilidade"></div>
-          </div>
-
-          <!-- Big "Conferir disponibilidade" button right below the calendar -->
-          <div class="reserve-actions" style="text-align:center;">
-            <button id="checkAvailabilityBtn" class="reserve-cta-btn" type="button" aria-live="polite">Conferir disponibilidade</button>
-          </div>
-
-          <div class="reserve-error" id="reserveError" aria-live="polite"></div>
-
-          <!-- WhatsApp CTA will appear here only after successful availability check -->
-          <div id="postCheckActions" style="text-align:center; margin-top:8px;"></div>
-
-          <p class="helper">
-              Após conferir disponibilidade você poderá enviar a solicitação pelo WhatsApp.
-          </p>
-      </div>
-      <!-- end reserve card -->
-
+      <a href="https://wa.me/11947416919?text=Olá! Quero reservar minha estadia na Vivenda Joanópolis" class="btn btn-white">Reservar pelo WhatsApp</a>
     </div>
   </section>
 
@@ -325,326 +372,344 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOXS, MODALS and other sections kept identical (omitted in this snippet for brevity) -->
+  <!-- LIGHTBOXS -->
+  <div id="lightbox1" class="lightbox" onclick="closeLightbox(1)">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox(1)">×</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-btn prev" onclick="moveLightboxSlide(1, -1)">‹</button>
+      <img id="lightbox-image1" class="lightbox-image" src="" alt="Imagem em tela cheia" />
+      <button class="lightbox-btn next" onclick="moveLightboxSlide(1, 1)">›</button>
+    </div>
+  </div>
+
+  <div id="lightbox2" class="lightbox" onclick="closeLightbox(2)">
+    <button class="lightbox-close" onclick="event.stopPropagation(); closeLightbox(2)">×</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-btn prev" onclick="moveLightboxSlide(2, -1)">‹</button>
+      <img id="lightbox-image2" class="lightbox-image" src="" alt="Imagem em tela cheia" />
+      <button class="lightbox-btn next" onclick="moveLightboxSlide(2, 1)">›</button>
+    </div>
+  </div>
+
+  <!-- MODAIS -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal1')">×</button>
+      <div class="modal-text">
+        <h3>Pousada João de Barro — Detalhes</h3>
+        <p>Desfrute de um pôr do sol inesquecível em uma casa acolhedora, cercada pela natureza e próxima à represa.</p>
+        <p>Um lugar ideal para relaxar, desconectar e viver momentos especiais em família, casal ou entre amigos.</p>
+        <p>A casa é privativa, totalmente cercada e equipada para que sua estadia seja confortável, tranquila e memorável.</p>
+
+        <p><strong>⭐ O que oferecemos</strong></p>
+        <ul>
+          <li>Piscina privativa</li>
+          <li>Área de fogueira</li>
+          <li>Churrasqueira</li>
+          <li>Cozinha completa</li>
+          <li>Wi-Fi fibra</li>
+          <li>TV com Netflix e Amazon Prime</li>
+          <li>Calefator</li>
+          <li>Casa totalmente cercada</li>
+          <li>Pet friendly (com regras)</li>
+        </ul>
+        <p><em>Obs.: Não fornecemos roupas de cama e banho.</em></p>
+
+        <p><strong>🛏️ O espaço</strong></p>
+        <ul>
+          <li>2 suítes confortáveis</li>
+          <li>Sofá extensível que vira cama de casal</li>
+          <li>Cozinha equipada com os principais utensílios</li>
+          <li>Berço desmontável disponível sob solicitação (até 2 anos)</li>
+          <li>Jardim em implantação (algumas áreas externas ainda descampadas)</li>
+        </ul>
+
+        <p><strong>📍 Localização</strong></p>
+        <ul>
+          <li>15 km do centro de Joanópolis</li>
+          <li>20 min da Serra do Lopo</li>
+          <li>30 min das cachoeiras</li>
+          <li>2 km de estrada de terra até a casa</li>
+        </ul>
+        <p>A região é rural e tranquila, sem mercados ou comércios por perto. Recomendamos trazer tudo o que precisar para sua estadia.</p>
+
+        <p><strong>🔑 Acesso do hóspede</strong></p>
+        <p>A casa inteira é de uso exclusivo dos hóspedes, exceto uma pequena despensa trancada.</p>
+
+        <p><strong>📌 Regras importantes</strong></p>
+        <ul>
+          <li>Não sentar ou deitar no sofá/camas com roupas molhadas.</li>
+          <li>Não usar taças ou copos de vidro na área da piscina.</li>
+          <li>Não pular na piscina (profundidade: 1,20 m + 1 degrau).</li>
+          <li>No checkout, deixar o lixo na caçamba da estrada (não há coleta na porta).</li>
+        </ul>
+
+        <p><strong>🐾 Sobre pets</strong></p>
+        <p>Seu pet é bem-vindo! Pedimos apenas:</p>
+        <ul>
+          <li>Não deixar o pet sozinho dentro da casa.</li>
+          <li>Não permitir que faça necessidades dentro da casa.</li>
+          <li>Pets não podem entrar na piscina.</li>
+          <li>Danos a sofás/camas têm taxa de R$ 350 por móvel ou valor total de reposição.</li>
+        </ul>
+        <p>A taxa de pet cobre a limpeza detalhada após a sua estadia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal2')">×</button>
+      <div class="modal-text">
+        <h3>Pousada Aroeira — Detalhes</h3>
+
+        <p>Nossa casa fica em uma área tranquila, com acesso à represa através de área comum — incluindo rampa comunitária para descida de embarcações.</p>
+
+        <p>Atenção: o nível da represa pode variar bastante ao longo do ano. Entre em contato para confirmar antes da sua estadia.</p>
+
+        <p>Você também conta com piscina privativa, área de fogueira exclusiva, cozinha completa e churrasqueira na varanda — tudo pensado para que sua experiência seja relaxante e confortável.</p>
+
+        <p><strong>⭐ Destaques do espaço</strong></p>
+        <ul>
+          <li>Piscina privativa</li>
+          <li>Acesso à represa (área comum)</li>
+          <li>Rampa comunitária para embarcações</li>
+          <li>Possibilidade de pesca</li>
+          <li>Aluguel de caiaques para toda a estadia (consulte)</li>
+          <li>Área de fogueira privativa</li>
+          <li>Cozinha completa</li>
+          <li>Churrasqueira na varanda</li>
+          <li>TV com Netflix e Amazon Prime</li>
+          <li>Wi-Fi via rádio (bom, porém pode oscilar em dias de chuva/vento)</li>
+          <li>Ambiente totalmente cercado</li>
+          <li>Pet friendly (com regras)</li>
+        </ul>
+
+        <p><strong>📍 Localização</strong></p>
+        <ul>
+          <li>20 min da Serra do Lopo</li>
+          <li>30 min das cachoeiras</li>
+          <li>4 km de estrada de terra até a casa</li>
+        </ul>
+
+        <p><strong>🛏️ O espaço</strong></p>
+        <p>Acomoda até 6 hóspedes sem taxa extra.</p>
+        <p>A casa possui:</p>
+        <ul>
+          <li>3 quartos</li>
+          <li>2 com cama de casal</li>
+          <li>1 com 2 camas de solteiro</li>
+          <li>Sala com TV via internet</li>
+          <li>Cozinha equipada com todos os utensílios necessários</li>
+          <li>1 banheiro com chuveiro (aquecimento a gás e elétrico)</li>
+        </ul>
+
+        <p>Não fornecemos roupas de cama e banho, mas disponibilizamos:</p>
+        <ul>
+          <li>Travesseiros com capas higienizadas</li>
+          <li>Alguns cobertores</li>
+        </ul>
+
+        <p>O quintal possui um amplo gramado, e logo abaixo (área comum) está a represa, onde é possível remar, pescar ou levar seu barco/lancha/jetski — desde que o nível da água permita.</p>
+
+        <p><strong>Importante:</strong> Antes da sua reserva, consulte o nível da represa.</p>
+
+        <p>Há também um playground infantil na área da represa (fora da propriedade).</p>
+
+        <p><strong>🔑 Acesso do hóspede</strong></p>
+        <p>Toda a casa e quintal são de uso exclusivo dos hóspedes.<br>A rampa para embarcações e a margem da represa são de área comum.</p>
+
+        <p><strong>🐾 Pets</strong></p>
+        <p>Pets são bem-vindos, e cobramos uma taxa adicional pela limpeza especial.</p>
+        <p>Regras importantes:</p>
+        <ul>
+          <li>Pets não podem entrar nos quartos, camas ou sofás</li>
+          <li>Não podem fazer necessidades dentro da casa</li>
+          <li>Sujeito a multa em caso de sujidade ou danos a camas/sofás</li>
+          <li>A casa é totalmente cercada, ideal para tutores que desejam segurança</li>
+        </ul>
+
+        <p><strong>📌 Outras observações importantes</strong></p>
+
+        <p><strong>🚮 Lixo</strong><br>
+        Pedimos que o lixo seja deixado na caçamba da estrada (a 1 km da casa).<br>
+        Não há coleta na região e a faxineira não tem como transportar.</p>
+
+        <p><strong>📶 Sinal e internet</strong><br>
+        Algumas operadoras não têm sinal de celular na casa.<br>
+        A internet via rádio pode oscilar devido à mata ao redor e mudanças climáticas.</p>
+
+        <p><strong>🌊 Sobre a represa</strong><br>
+        O nível varia conforme o período de chuvas.<br>
+        Em algumas épocas não é possível descer embarcações, apenas remar ou nadar.<br>
+        Caiaques podem ser alugados separadamente (consulte valores).</p>
+
+        <p><strong>🛣️ Localização</strong><br>
+        A casa fica em área rural, com 4 km de estrada de terra.<br>
+        O lazer principal: represa, caiaques, área de fogueira, piscina e churrasqueira.</p>
+
+        <p>Se você busca natureza, privacidade, tranquilidade e uma experiência completa à beira da represa, será um prazer receber você! 🌿✨</p>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // Utility date helpers
-    function formatISOdate(d) {
-      let yyyy = d.getFullYear();
-      let mm = String(d.getMonth() + 1).padStart(2, '0');
-      let dd = String(d.getDate()).padStart(2, '0');
-      return `${yyyy}-${mm}-${dd}`;
-    }
-    function parseISO(iso) {
-      return new Date(iso + 'T00:00:00');
-    }
-    function formatDisplayFromISO(iso) {
-      // iso: YYYY-MM-DD -> display DD/MM/YYYY
-      if (!iso) return '';
-      const parts = iso.split('-');
-      if (parts.length !== 3) return iso;
-      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    // FAQ toggle
+    function toggleFaq(el) { el.parentElement.classList.toggle('active'); }
+
+    // Modal controls
+    function openModal(id) { const m = document.getElementById(id); if (m) m.classList.add('active'); }
+    function closeModal(id) { const m = document.getElementById(id); if (m) m.classList.remove('active'); }
+
+    // Utility: extract URL from CSS background-image
+    function extractUrl(bg) {
+      if (!bg) return '';
+      const m = bg.match(/url\((?:'|")?(.*?)(?:'|")?\)/);
+      return m ? m[1] : bg.replace(/(^url\()|(\)$)|["']/g, '');
     }
 
-    // Keep reserved sets as before (ics parsing code kept)
-    const AIRBNB_ICAL_URL = '';
-    const CORS_PROXY = 'https://corsproxy.io/?';
-    let reservedRangesSet = new Set();
-
-    async function fetchCalendarReservations() {
-      if (!AIRBNB_ICAL_URL) {
-        reservedRangesSet = new Set();
-        return;
-      }
-      try {
-        const res = await fetch(CORS_PROXY + encodeURIComponent(AIRBNB_ICAL_URL));
-        const icsText = await res.text();
-        reservedRangesSet = new Set();
-        const events = icsText.split('BEGIN:VEVENT');
-        for (let i = 1; i < events.length; i++) {
-          const ev = events[i];
-          const startMatch = ev.match(/DTSTART[;:].*?:(\d{8})/);
-          const endMatch = ev.match(/DTEND[;:].*?:(\d{8})/);
-          if (startMatch && endMatch) {
-            const s = startMatch[1];
-            const e = endMatch[1];
-            const startISO = `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
-            const endISO = `${e.slice(0,4)}-${e.slice(4,6)}-${e.slice(6,8)}`;
-            let cur = new Date(startISO + 'T00:00:00');
-            const endDt = new Date(endISO + 'T00:00:00'); // exclusive
-            while (cur < endDt) {
-              const iso = formatISOdate(cur);
-              reservedRangesSet.add(iso);
-              cur.setDate(cur.getDate() + 1);
-            }
+    // Carousels initialization: collects images, sets indicators, exposes move/get functions and auto-advance.
+    (function initCarousels(){
+      window.__carousels = window.__carousels || {};
+      const carouselEls = document.querySelectorAll('.carousel');
+      carouselEls.forEach(function(carouselEl){
+        const idAttr = carouselEl.id || '';
+        const idMatch = idAttr.match(/carousel(\d+)/);
+        if (!idMatch) return;
+        const cid = parseInt(idMatch[1], 10);
+        const slidesEl = carouselEl.querySelector('.carousel-slides');
+        if (!slidesEl) return;
+        const slides = Array.from(slidesEl.children);
+        const images = slides.map(s => {
+          const inline = s.style.backgroundImage;
+          const computed = getComputedStyle(s).backgroundImage;
+          return extractUrl(inline || computed);
+        });
+        const indicatorsEl = document.getElementById('indicators' + cid);
+        let current = 0;
+        function update(){
+          slidesEl.style.transform = 'translateX(' + (-current * 100) + '%)';
+          if (indicatorsEl) {
+            Array.from(indicatorsEl.children).forEach((d,i) => d.classList.toggle('active', i===current));
           }
         }
-      } catch (err) {
-        console.error('Erro ao carregar iCal:', err);
-        reservedRangesSet = new Set();
-      }
-    }
+        // create indicators
+        if (indicatorsEl) {
+          indicatorsEl.innerHTML = '';
+          images.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+            dot.onclick = function(e){ e.stopPropagation(); current = idx; update(); };
+            indicatorsEl.appendChild(dot);
+          });
+        }
+        window.__carousels[cid] = { slidesEl, slides, images, get current(){ return current; }, set current(v){ current = v; }, update };
+        // auto advance
+        setInterval(function(){
+          if (!window.__carousels[cid]) return;
+          current = (current + 1) % images.length;
+          update();
+        }, 6000 + cid * 300);
+        // initial render
+        update();
+      });
 
-    // Inline calendar rendering (keeps same logic, but uses data-iso attributes for inputs and displays DD/MM/YYYY)
-    const monthNamesPt = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+      // exposed functions
+      window.moveSlide = function(carouselId, direction){
+        const c = window.__carousels[carouselId];
+        if (!c) return;
+        const len = c.images.length;
+        let next = (c.current + direction + len) % len;
+        c.current = next;
+        c.update();
+      };
+      window.getCurrentSlide = function(carouselId){
+        const c = window.__carousels[carouselId];
+        if (!c) return '';
+        return c.images[c.current];
+      };
+    })();
 
-    let activeInlineInput = null;
-    function inlineCalendarEl() { return document.getElementById('inlineCalendar'); }
-    function inlineGridEl() { return document.getElementById('inlineCalendarGrid'); }
-    function inlineMonthTitleEl() { return document.getElementById('inlineMonthTitle'); }
-
-    function showInlineCalendar(inputId, year, month) {
-      activeInlineInput = inputId;
-      const el = inlineCalendarEl();
-      if (!el) return;
-      el.classList.add('active');
-      el.setAttribute('aria-hidden', 'false');
-
-      // If input already has a data-iso, show that month
-      const input = document.getElementById(inputId);
-      if (input && input.getAttribute('data-iso')) {
-        const iso = input.getAttribute('data-iso');
-        const dt = parseISO(iso);
-        renderInlineCalendar(dt.getFullYear(), dt.getMonth());
-      } else if (typeof year === 'number' && typeof month === 'number') {
-        renderInlineCalendar(year, month);
-      } else {
-        const today = new Date();
-        renderInlineCalendar(today.getFullYear(), today.getMonth());
-      }
-
-      // focus first available day for accessibility
-      setTimeout(() => {
-        const firstAvailable = inlineGridEl().querySelector('.calendar-day-inline.available');
-        if (firstAvailable) firstAvailable.focus();
-      }, 80);
-    }
-
-    function hideInlineCalendar() {
-      activeInlineInput = null;
-      const el = inlineCalendarEl();
-      if (!el) return;
-      el.classList.remove('active');
-      el.setAttribute('aria-hidden', 'true');
-    }
-
-    function renderInlineCalendar(year, month) {
-      const gridEl = inlineGridEl();
-      const monthTitle = inlineMonthTitleEl();
-      if (!gridEl || !monthTitle) return;
-      monthTitle.textContent = `${monthNamesPt[month]} ${year}`;
-
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-      let cells = [];
-      for (let i = 0; i < firstDay; i++) cells.push({outside:true});
-      for (let d = 1; d <= daysInMonth; d++) {
-        const dt = new Date(year, month, d);
-        const iso = formatISOdate(dt);
-        const reserved = reservedRangesSet.has(iso);
-        const available = !reserved && (dt >= new Date(new Date().toDateString()));
-        cells.push({
-          outside:false,
-          day:d,
-          iso,
-          reserved,
-          available
-        });
-      }
-      while (cells.length % 7 !== 0) cells.push({outside:true});
-
-      const weekNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-      let html = '';
-      for (let wn of weekNames) html += `<div class="calendar-weekday-inline">${wn}</div>`;
-      for (const c of cells) {
-        if (c.outside) {
-          html += `<div class="calendar-day-inline outside" role="gridcell" aria-hidden="true"></div>`;
-        } else {
-          const classes = [
-            'calendar-day-inline',
-            c.reserved ? 'reserved' : (c.available ? 'available' : ''),
-            (c.iso === formatISOdate(new Date())) ? 'today' : ''
-          ].join(' ');
-          html += `<div class="${classes}" role="gridcell" data-iso="${c.iso}" tabindex="0" aria-label="${c.iso}">${c.day}</div>`;
+    // HERO carousel initialization: indicators, arrows, auto-advance and pause on hover
+    (function initHeroCarousel(){
+      const slidesEl = document.getElementById('heroSlides');
+      if (!slidesEl) return;
+      const slides = Array.from(slidesEl.children);
+      const indicatorsEl = document.getElementById('heroIndicators');
+      const prevBtn = document.getElementById('heroPrev');
+      const nextBtn = document.getElementById('heroNext');
+      let current = 0;
+      function update(){
+        slidesEl.style.transform = 'translateX(' + (-current * 100) + '%)';
+        if (indicatorsEl) {
+          Array.from(indicatorsEl.children).forEach((d,i) => d.classList.toggle('active', i===current));
         }
       }
-      gridEl.innerHTML = html;
-
-      // handlers
-      gridEl.querySelectorAll('.calendar-day-inline.available').forEach(el => {
-        el.addEventListener('click', function() {
-          const iso = this.getAttribute('data-iso');
-          if (!activeInlineInput) activeInlineInput = 'checkin';
-          const checkinEl = document.getElementById('checkin');
-          const checkoutEl = document.getElementById('checkout');
-
-          // Set the selected input's displayed value (DD/MM/YYYY) and store ISO in data-iso
-          if (activeInlineInput === 'checkin') {
-            checkinEl.value = formatDisplayFromISO(iso);
-            checkinEl.setAttribute('data-iso', iso);
-          } else if (activeInlineInput === 'checkout') {
-            checkoutEl.value = formatDisplayFromISO(iso);
-            checkoutEl.setAttribute('data-iso', iso);
-          }
-
-          // visually mark selection using data-iso attributes
-          markSelectedRangeVisual();
-
-          // close calendar immediately as requested
-          hideInlineCalendar();
+      // create indicators
+      if (indicatorsEl) {
+        indicatorsEl.innerHTML = '';
+        slides.forEach((_, idx) => {
+          const dot = document.createElement('div');
+          dot.className = 'indicator' + (idx === 0 ? ' active' : '');
+          dot.onclick = function(e){ e.stopPropagation(); current = idx; update(); };
+          indicatorsEl.appendChild(dot);
         });
-        el.addEventListener('keydown', function(e){
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
-        });
-      });
+      }
+      if (prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); current = (current - 1 + slides.length) % slides.length; update(); });
+      if (nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); current = (current + 1) % slides.length; update(); });
+
+      let timer = setInterval(function(){
+        current = (current + 1) % slides.length;
+        update();
+      }, 5000);
+
+      // pause on hover/focus
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        heroSection.addEventListener('mouseenter', function(){ clearInterval(timer); });
+        heroSection.addEventListener('mouseleave', function(){ timer = setInterval(function(){ current = (current + 1) % slides.length; update(); }, 5000); });
+        // also pause when hero receives focus (accessibility)
+        heroSection.addEventListener('focusin', function(){ clearInterval(timer); });
+        heroSection.addEventListener('focusout', function(){ timer = setInterval(function(){ current = (current + 1) % slides.length; update(); }, 5000); });
+      }
+
+      // initial render
+      update();
+    })();
+
+    // Lightbox controls: open with the carousel's current image; navigate images and sync carousel
+    window.__lightboxIndex = window.__lightboxIndex || {};
+    function openLightbox(id, imgSrc){
+      const lb = document.getElementById('lightbox' + id);
+      const imgEl = document.getElementById('lightbox-image' + id);
+      const carousel = window.__carousels && window.__carousels[id];
+      const source = imgSrc || (carousel ? carousel.images[carousel.current] : '');
+      if (imgEl) imgEl.src = source || '';
+      if (lb) lb.classList.add('active');
+      if (carousel) window.__lightboxIndex[id] = carousel.current || 0;
+    }
+    function closeLightbox(id){
+      const lb = document.getElementById('lightbox' + id);
+      if (lb) lb.classList.remove('active');
+    }
+    function moveLightboxSlide(id, direction){
+      const carousel = window.__carousels && window.__carousels[id];
+      if (!carousel) return;
+      let idx = window.__lightboxIndex[id] ?? carousel.current;
+      const len = carousel.images.length;
+      idx = (idx + direction + len) % len;
+      window.__lightboxIndex[id] = idx;
+      // update lightbox image
+      const imgEl = document.getElementById('lightbox-image' + id);
+      if (imgEl) imgEl.src = carousel.images[idx];
+      // sync carousel UI as well
+      carousel.current = idx;
+      carousel.update();
     }
 
-    function markSelectedRangeVisual() {
-      const checkinISO = document.getElementById('checkin').getAttribute('data-iso');
-      const checkoutISO = document.getElementById('checkout').getAttribute('data-iso');
-      document.querySelectorAll('.calendar-day-inline').forEach(el => {
-        el.classList.remove('selected');
-      });
-      if (checkinISO && checkoutISO) {
-        let cur = parseISO(checkinISO);
-        const end = parseISO(checkoutISO);
-        while (cur <= end) {
-          const iso = formatISOdate(cur);
-          const el = document.querySelector(`.calendar-day-inline[data-iso="${iso}"]`);
-          if (el) el.classList.add('selected');
-          cur.setDate(cur.getDate() + 1);
-        }
-      } else if (checkinISO && !checkoutISO) {
-        const el = document.querySelector(`.calendar-day-inline[data-iso="${checkinISO}"]`);
-        if (el) el.classList.add('selected');
-      }
-    }
-
-    // Availability check uses stored data-iso attributes for accurate parsing
-    function checkAvailabilityHandler() {
-      const checkinInput = document.getElementById('checkin');
-      const checkoutInput = document.getElementById('checkout');
-      const guestsEl = document.getElementById('guests');
-      const errEl = document.getElementById('reserveError');
-      const postEl = document.getElementById('postCheckActions');
-      errEl.textContent = '';
-      postEl.innerHTML = '';
-      errEl.style.color = '#c0392b';
-
-      const checkinISO = checkinInput.getAttribute('data-iso');
-      const checkoutISO = checkoutInput.getAttribute('data-iso');
-      const guests = guestsEl.value;
-
-      if (!checkinISO || !checkoutISO) {
-        errEl.textContent = 'Por favor selecione check-in e check-out.';
-        return;
-      }
-      const dtIn = parseISO(checkinISO);
-      const dtOut = parseISO(checkoutISO);
-      if (dtOut <= dtIn) {
-        errEl.textContent = 'Check-out deve ser posterior ao check-in.';
-        return;
-      }
-
-      let current = new Date(dtIn);
-      let conflict = null;
-      const conflictedDates = [];
-      while (current < dtOut) {
-        const iso = formatISOdate(current);
-        if (reservedRangesSet.has(iso)) {
-          conflict = true;
-          conflictedDates.push(formatDisplayFromISO(iso)); // display-friendly
-        }
-        current.setDate(current.getDate() + 1);
-      }
-
-      if (conflict) {
-        errEl.textContent = 'Datas indisponíveis: ' + conflictedDates.slice(0,5).join(', ') + (conflictedDates.length>5 ? ' ...' : '');
-        postEl.innerHTML = `<a class="whatsapp-cta" href="${buildWhatsAppLink(checkinInput.value, checkoutInput.value, guests)}" target="_blank" rel="noopener">Enviar solicitação pelo WhatsApp</a>`;
-        return;
-      }
-
-      errEl.style.color = '#27ae60';
-      errEl.textContent = 'Datas disponíveis! Clique em enviar para solicitar a reserva via WhatsApp.';
-      postEl.innerHTML = `<a class="whatsapp-cta" href="${buildWhatsAppLink(checkinInput.value, checkoutInput.value, guests)}" target="_blank" rel="noopener">Enviar solicitação pelo WhatsApp</a>`;
-      setTimeout(()=> { errEl.style.color = '#c0392b'; }, 4000);
-    }
-
-    function buildWhatsAppLink(displayCheckin, displayCheckout, guests) {
-      const phone = '5511947416919';
-      const msg = encodeURIComponent(`Olá! Gostaria de solicitar reserva.\nCheck-in: ${displayCheckin}\nCheck-out: ${displayCheckout}\nHóspedes: ${guests}\nObrigado!`);
-      return `https://wa.me/${phone}?text=${msg}`;
-    }
-
-    // Init
-    document.addEventListener('DOMContentLoaded', async function() {
-      await fetchCalendarReservations();
-
-      let showDate = new Date();
-      let showYear = showDate.getFullYear();
-      let showMonth = showDate.getMonth();
-
-      // render month once (calendar hidden until input click)
-      renderInlineCalendar(showYear, showMonth);
-
-      const checkinEl = document.getElementById('checkin');
-      const checkoutEl = document.getElementById('checkout');
-      const inlinePrevBtn = document.getElementById('inlinePrev');
-      const inlineNextBtn = document.getElementById('inlineNext');
-
-      function openFor(inputId) {
-        activeInlineInput = inputId;
-        showInlineCalendar(inputId, showYear, showMonth);
-      }
-
-      if (checkinEl) {
-        checkinEl.addEventListener('click', function(e){ e.stopPropagation(); openFor('checkin'); });
-        checkinEl.addEventListener('focus', function(e){ e.stopPropagation(); openFor('checkin'); });
-      }
-      if (checkoutEl) {
-        checkoutEl.addEventListener('click', function(e){ e.stopPropagation(); openFor('checkout'); });
-        checkoutEl.addEventListener('focus', function(e){ e.stopPropagation(); openFor('checkout'); });
-      }
-
-      inlinePrevBtn.addEventListener('click', function(e){
-        e.stopPropagation();
-        showMonth--;
-        if (showMonth < 0) { showMonth = 11; showYear--; }
-        renderInlineCalendar(showYear, showMonth);
-        showInlineCalendar(activeInlineInput || 'checkin', showYear, showMonth);
-      });
-      inlineNextBtn.addEventListener('click', function(e){
-        e.stopPropagation();
-        showMonth++;
-        if (showMonth > 11) { showMonth = 0; showYear++; }
-        renderInlineCalendar(showYear, showMonth);
-        showInlineCalendar(activeInlineInput || 'checkin', showYear, showMonth);
-      });
-
-      // hide calendar when clicking outside
-      document.addEventListener('click', function(e) {
-        const inline = inlineCalendarEl();
-        if (!inline) return;
-        if (inline.contains(e.target)) return;
-        if (checkinEl && checkinEl.contains(e.target)) return;
-        if (checkoutEl && checkoutEl.contains(e.target)) return;
-        hideInlineCalendar();
-      });
-
-      document.addEventListener('keydown', function(e){
-        if (e.key === 'Escape') hideInlineCalendar();
-      });
-
-      checkinEl.addEventListener('change', markSelectedRangeVisual);
-      checkoutEl.addEventListener('change', markSelectedRangeVisual);
-
-      document.getElementById('checkAvailabilityBtn').addEventListener('click', checkAvailabilityHandler);
-
-      setInterval(async () => {
-        await fetchCalendarReservations();
-        renderInlineCalendar(showYear, showMonth);
-      }, 5 * 60 * 1000);
+    // prevent propagation for carousel buttons
+    document.addEventListener('click', function(e){
+      if (e.target && e.target.matches('.carousel-btn')) e.stopPropagation();
     });
   </script>
 </body>

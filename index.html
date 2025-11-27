@@ -352,15 +352,382 @@ Distâncias:
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="final-cta">
-    <div class="container">
-      <h2 class="section-title">Pronto para Viver Esta Experiência?</h2>
-      <p class="section-subtitle">Reserve agora sua estadia e descubra o verdadeiro significado de descanso e conexão com a natureza</p>
-      <a href="https://wa.me/11947416919?text=Olá! Quero reservar minha estadia na Vivenda Joanópolis" class="btn btn-white">Reservar pelo WhatsApp</a>
-    </div>
-  </section>
+      <!-- CTA -->
+    <!-- Substitua a section de reserva e o script final por este bloco: -->
 
+<!-- MODAL ÚNICO DO CALENDÁRIO (reutilizado para as duas casas) -->
+<!-- ... código do site acima ... -->
+
+<section class="cta-section" id="contato" style="background:linear-gradient(135deg,#fa6866 0%,#fd8365 100%);min-height:95vh;display:flex;align-items:center;justify-content:center;">
+  <div class="container" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:36px;min-height:65vh;">
+    <!-- João de Barro -->
+    <div class="reserve-card new-card-design" style="flex:1 1 320px;max-width:420px;">
+      <h3 class="reserva-card-titulo">
+        Casa João de Barro<br>
+        <span class="reserva-card-chamada">Verificar disponibilidade</span>
+      </h3>
+      <div class="reserve-row" style="display:flex;flex-direction:column;gap:18px;margin-bottom:15px;">
+        <label for="checkin-jb" class="reserva-label">
+          CHECK-IN
+          <input type="text" id="checkin-jb" name="checkin-jb" aria-label="Check-in João de Barro" readonly
+            class="reserva-input"
+            placeholder="Selecione a data" />
+        </label>
+        <label for="checkout-jb" class="reserva-label">
+          CHECKOUT
+          <input type="text" id="checkout-jb" name="checkout-jb" aria-label="Check-out João de Barro" readonly
+            class="reserva-input"
+            placeholder="Selecione a data" />
+        </label>
+      </div>
+      <div class="reserve-row" style="margin-bottom:8px;">
+        <label for="guests-jb" class="reserva-label">
+          HÓSPEDES
+          <select id="guests-jb" name="guests-jb" aria-label="Número de hóspedes João de Barro"
+            class="reserva-input">
+            <option value="1">1 hóspede</option>
+            <option value="2">2 hóspedes</option>
+            <option value="3">3 hóspedes</option>
+            <option value="4">4 hóspedes</option>
+          </select>
+        </label>
+      </div>
+      <div class="reserve-actions" style="width:100%;margin-top:30px;display:flex;justify-content:center;">
+        <button id="checkAvailabilityBtn-jb" type="button"
+          style="width:100%;background:#fa6866;color:white;font-size:1.24rem;font-weight:500;padding:19px 0;border:none;border-radius:33px;box-shadow:0 7px 20px rgba(250,104,102,0.09);transition:background .3s, box-shadow .3s;outline:none;cursor:pointer;text-align:center;box-shadow:0 10px 26px rgba(250,104,102,0.13);">
+          Conferir disponibilidade
+        </button>
+      </div>
+      <div class="reserve-error" id="reserveError-jb" aria-live="polite" style="text-align:center;margin-top:8px;font-size:1rem;color:#FF5050;"></div>
+      <p class="reserva-secundario">
+        Após conferir disponibilidade, você poderá enviar a solicitação pelo WhatsApp mencionando a Casa João de Barro.
+      </p>
+    </div>
+    <!-- Aroeira -->
+    <div class="reserve-card new-card-design" style="flex:1 1 320px;max-width:420px;">
+      <h3 class="reserva-card-titulo">
+        Casa Aroeira<br>
+        <span class="reserva-card-chamada">Verificar disponibilidade</span>
+      </h3>
+      <div class="reserve-row" style="display:flex;flex-direction:column;gap:18px;margin-bottom:15px;">
+        <label for="checkin-ar" class="reserva-label">
+          CHECK-IN
+          <input type="text" id="checkin-ar" name="checkin-ar" aria-label="Check-in Aroeira" readonly
+            class="reserva-input"
+            placeholder="Selecione a data" />
+        </label>
+        <label for="checkout-ar" class="reserva-label">
+          CHECKOUT
+          <input type="text" id="checkout-ar" name="checkout-ar" aria-label="Check-out Aroeira" readonly
+            class="reserva-input"
+            placeholder="Selecione a data" />
+        </label>
+      </div>
+      <div class="reserve-row" style="margin-bottom:8px;">
+        <label for="guests-ar" class="reserva-label">
+          HÓSPEDES
+          <select id="guests-ar" name="guests-ar" aria-label="Número de hóspedes Aroeira"
+            class="reserva-input">
+            <option value="1">1 hóspede</option>
+            <option value="2">2 hóspedes</option>
+            <option value="3">3 hóspedes</option>
+            <option value="4">4 hóspedes</option>
+            <option value="5">5 hóspedes</option>
+            <option value="6">6 hóspedes</option>
+          </select>
+        </label>
+      </div>
+      <div class="reserve-actions" style="width:100%;margin-top:30px;display:flex;justify-content:center;">
+        <button id="checkAvailabilityBtn-ar" type="button"
+          style="width:100%;background:#fa6866;color:white;font-size:1.24rem;font-weight:500;padding:19px 0;border:none;border-radius:33px;box-shadow:0 7px 20px rgba(250,104,102,0.09);transition:background .3s, box-shadow .3s;outline:none;cursor:pointer;text-align:center;box-shadow:0 10px 26px rgba(250,104,102,0.13);">
+          Conferir disponibilidade
+        </button>
+      </div>
+      <div class="reserve-error" id="reserveError-ar" aria-live="polite" style="text-align:center;margin-top:8px;font-size:1rem;color:#FF5050;"></div>
+      <p class="reserva-secundario">
+        Após conferir disponibilidade, você poderá enviar a solicitação pelo WhatsApp mencionando a Casa Aroeira.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL ÚNICO DO CALENDÁRIO (reutilizado para as duas casas) -->
+<div id="customCalendarModal" class="modal">
+  <div class="modal-content calendar-modal-content" style="max-width:400px;">
+    <button class="modal-close" onclick="closeCustomCalendar()">×</button>
+    <div style="padding-bottom:12px;">
+      <div id="calendarTitle" style="font-size:1.23rem;font-weight:600;margin-bottom:8px;color:#ba1818;">Selecione a data</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <button id="calendarPrevMonth" style="background:none;border:none;color:#ba1818;font-size:2rem;cursor:pointer;">‹</button>
+        <div id="calendarMonthText" style="font-size:1.14rem;font-weight:500;color:#ba1818;"></div>
+        <button id="calendarNextMonth" style="background:none;border:none;color:#ba1818;font-size:2rem;cursor:pointer;">›</button>
+      </div>
+    </div>
+    <div id="calendarGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:1.07rem;"></div>
+    <div style="font-size:0.81rem;color:#fa6866;text-align:center;margin-top:16px;">
+      Dias reservados não podem ser selecionados.
+    </div>
+    <div style="font-size:0.8rem;color:#7f8c8d;text-align:center;margin-top:7px;">
+      Use as setas para navegar entre os meses.
+    </div>
+  </div>
+</div>
+
+<style>
+@media (max-width: 880px) {
+  .cta-section .container { flex-direction: column !important; gap: 18px !important; }
+  .reserve-card { max-width: 97vw !important; }
+}
+/* CALENDÁRIO: cores proposta */
+.calendar-day.available {
+  background: #2ecc71 !important;
+  color: #fff !important;
+}
+.calendar-day.available:hover, .calendar-day.available.selected {
+  background: #27ae60 !important;
+  color: white !important;
+}
+.calendar-day.reserved {
+  background: #e74c3c !important;
+  color: #fff !important;
+  cursor:not-allowed;
+  opacity: 0.9;
+}
+/* Ajuste visual label/input/card texts brancos para reserva */
+.reserva-card-titulo { font-size:2rem;font-weight:500;text-align:center;color:white;margin-bottom:26px; }
+.reserva-card-chamada { font-size:1.18rem;color:#fff!important;font-weight:500; }
+.reserva-label { color:#fff;font-weight:600;letter-spacing:1.07px;font-size:1.09rem;margin-bottom:3px;display:block; }
+.reserva-input { width:100%;margin-top:7px;background:#ededed;border:none;height:54px;border-radius:10px;box-shadow:none;font-size:1.13rem;padding-left:20px;color:#555;outline:none;cursor:pointer; }
+.reserva-secundario { text-align:center; margin-top:29px; font-size:1.04rem; color:#fff; font-weight:500; }
+</style>
+
+
+<!-- O resto do arquivo e scripts permanecem iguais -->
+
+<script>
+const ICALS = {
+  "jb": "https://www.airbnb.com/calendar/ical/1235001714309661444.ics?s=632c33b556f673f68d16af6e7f24566a&locale=pt",
+  "ar": "https://www.airbnb.com/calendar/ical/36101836.ics?s=00f471f576fe2ec677c93bb55d6ef405&locale=pt"
+};
+const CORS_PROXY = 'https://corsproxy.io/?';
+
+function addDays(dateStr, num) {
+    const d = new Date(dateStr + 'T00:00:00');
+    d.setDate(d.getDate() + num);
+    return d;
+}
+function formatISOdate(d) {
+    let yyyy = d.getFullYear();
+    let mm = String(d.getMonth() + 1).padStart(2, '0');
+    let dd = String(d.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+}
+function formatBRdate(iso) {
+    if (!iso) return "";
+    let [yyyy, mm, dd] = iso.split("-");
+    return `${dd}/${mm}/${yyyy}`;
+}
+const monthNamesPt = [
+    "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+    "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+];
+
+// O calendário é "compartilhado", mas a variável abaixo identifica qual casa está aberta
+let calendarContext = null; // "jb" ou "ar"
+let calendarTargetInput = null;
+let calendarSelectedDate = null;
+let reservedRangesSet = new Set();
+
+async function fetchCalendarReservations(year, month, casaId) {
+    let url = ICALS[casaId];
+    if (!url) return;
+    try {
+        let res = await fetch(CORS_PROXY + encodeURIComponent(url));
+        let icsText = await res.text();
+        reservedRangesSet = new Set();
+        let events = icsText.split('BEGIN:VEVENT');
+        for (let i = 1; i < events.length; i++) {
+            let event = events[i];
+            let startMatch = event.match(/DTSTART[;:].*?:(\d{8})/);
+            let endMatch = event.match(/DTEND[;:].*?:(\d{8})/);
+            if (startMatch && endMatch) {
+                let startStr = startMatch[1];
+                let endStr = endMatch[1];
+                let startDate = `${startStr.slice(0,4)}-${startStr.slice(4,6)}-${startStr.slice(6,8)}`;
+                let endDate = `${endStr.slice(0,4)}-${endStr.slice(4,6)}-${endStr.slice(6,8)}`;
+                let startDt = new Date(startDate + 'T00:00:00');
+                let endDt = new Date(endDate + 'T00:00:00');
+                for (let d = new Date(startDt); d < endDt; d.setDate(d.getDate() + 1)) {
+                    reservedRangesSet.add(formatISOdate(d));
+                }
+            }
+        }
+    } catch(e) {
+        alert("Não foi possível carregar as disponibilidades. Verifique sua conexão ou o link iCAL.");
+    }
+}
+
+function openCustomCalendar(targetInputId, casaId) {
+    calendarContext = casaId; // "jb" ou "ar"
+    calendarTargetInput = document.getElementById(targetInputId);
+    if (!calendarTargetInput) return;
+    let today = new Date();
+    let showYear = today.getFullYear();
+    let showMonth = today.getMonth();
+    if (calendarTargetInput.dataset.isodate) {
+        let dt = new Date(calendarTargetInput.dataset.isodate + 'T00:00:00');
+        showYear = dt.getFullYear();
+        showMonth = dt.getMonth();
+    }
+    document.getElementById("customCalendarModal").classList.add("active");
+    document.body.style.overflow = "hidden";
+    calendarSelectedDate = calendarTargetInput.dataset.isodate || "";
+    setupCalendar(showYear, showMonth, casaId);
+    document.getElementById("calendarPrevMonth").onclick = function() {
+        showMonth -= 1;
+        if (showMonth < 0) { showMonth = 11; showYear -= 1;}
+        setupCalendar(showYear, showMonth, casaId);
+    };
+    document.getElementById("calendarNextMonth").onclick = function() {
+        showMonth += 1;
+        if (showMonth > 11) { showMonth = 0; showYear += 1;}
+        setupCalendar(showYear, showMonth, casaId);
+    };
+}
+async function setupCalendar(year, month, casaId) {
+    document.getElementById("calendarMonthText").textContent = monthNamesPt[month] + " " + year;
+    let cInId = casaId === "jb" ? "checkin-jb" : "checkin-ar";
+    document.getElementById("calendarTitle").textContent = calendarTargetInput === document.getElementById(cInId)
+        ? "Selecione o check-in desejado" : "Selecione o check-out desejado";
+    await fetchCalendarReservations(year, month, casaId);
+    let firstDay = new Date(year, month, 1).getDay();
+    let daysInMonth = new Date(year, month + 1, 0).getDate();
+    let grid = [];
+    for (let i = 0; i < firstDay; i++) grid.push({day: null, outside: true});
+    for (let d = 1; d <= daysInMonth; d++) {
+        let dateObj = new Date(year, month, d);
+        let isodate = formatISOdate(dateObj);
+        let reserved = reservedRangesSet.has(isodate);
+        let available = !reserved && dateObj >= new Date();
+        grid.push({
+            day: d,
+            dateStr: isodate,
+            reserved,
+            available,
+            outside: false,
+            selected: (isodate === calendarSelectedDate)
+        });
+    }
+    while (grid.length % 7 !== 0) grid.push({day: null, outside: true});
+    let weekNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+    let gridHtml = '';
+    for (let wn of weekNames) gridHtml += `<div class="calendar-weekday">${wn}</div>`;
+    for (let cell of grid) {
+        if (cell.outside) {
+            gridHtml += `<div class="calendar-day outside"></div>`;
+        } else {
+            let classes = "calendar-day";
+            if (cell.reserved) classes += " reserved";
+            else if (cell.available) classes += " available";
+            if (cell.selected) classes += " selected";
+            if (cell.dateStr === formatISOdate(new Date())) classes += " today";
+            gridHtml += `<div class="${classes}" data-datestr="${cell.dateStr}">${cell.day}</div>`;
+        }
+    }
+    document.getElementById("calendarGrid").innerHTML = gridHtml;
+    Array.from(document.querySelectorAll('.calendar-day.available')).forEach(dayEl => {
+        dayEl.onclick = function() {
+            calendarSelectedDate = this.getAttribute('data-datestr');
+            calendarTargetInput.value = formatBRdate(calendarSelectedDate);
+            calendarTargetInput.dataset.isodate = calendarSelectedDate;
+            closeCustomCalendar();
+            calendarTargetInput.dispatchEvent(new Event('input'));
+            calendarTargetInput.dispatchEvent(new Event('change'));
+        };
+    });
+}
+function closeCustomCalendar() {
+    document.getElementById("customCalendarModal").classList.remove("active");
+    document.body.style.overflow = "auto";
+    calendarTargetInput = null;
+    calendarContext = null;
+}
+window.addEventListener("DOMContentLoaded", () => {
+    // --- João de Barro
+    ["checkin-jb","checkout-jb"].forEach(id => {
+        const input = document.getElementById(id);
+        if (!input) return;
+        input.readOnly = true;
+        input.dataset.isodate = "";
+        input.addEventListener("mousedown", function(e) { e.preventDefault(); openCustomCalendar(this.id, "jb"); });
+        input.addEventListener("focus", function(e) { openCustomCalendar(this.id, "jb"); });
+    });
+    // --- Aroeira
+    ["checkin-ar","checkout-ar"].forEach(id => {
+        const input = document.getElementById(id);
+        if (!input) return;
+        input.readOnly = true;
+        input.dataset.isodate = "";
+        input.addEventListener("mousedown", function(e) { e.preventDefault(); openCustomCalendar(this.id, "ar"); });
+        input.addEventListener("focus", function(e) { openCustomCalendar(this.id, "ar"); });
+    });
+
+    // Botão João de Barro
+    document.getElementById('checkAvailabilityBtn-jb').addEventListener('click', function(){
+        const checkinIso = document.getElementById('checkin-jb').dataset.isodate;
+        const checkoutIso = document.getElementById('checkout-jb').dataset.isodate;
+        const checkinBR = formatBRdate(checkinIso);
+        const checkoutBR = formatBRdate(checkoutIso);
+        const guestsSel = document.getElementById('guests-jb');
+        const guests = guestsSel.options[guestsSel.selectedIndex].text;
+        let errorEl = document.getElementById('reserveError-jb');
+        errorEl.textContent = "";
+        if (!checkinIso || !checkoutIso) {
+            errorEl.textContent = "Por favor, selecione as datas de check-in e checkout.";
+            return;
+        }
+        let ci = new Date(checkinIso+"T00:00:00");
+        let co = new Date(checkoutIso+"T00:00:00");
+        if (co <= ci) {
+            errorEl.textContent = "A data de checkout deve ser depois do check-in.";
+            return;
+        }
+        let msg = `Olá! Gostaria de solicitar reserva para a CASA JOÃO DE BARRO.\nCheck-in: ${checkinBR}\nCheck-out: ${checkoutBR}\nHóspedes: ${guests}\nObrigado!`;
+        let url = "https://wa.me/5511947416919?text=" + encodeURIComponent(msg);
+        window.open(url, "_blank");
+    });
+
+    // Botão Aroeira
+    document.getElementById('checkAvailabilityBtn-ar').addEventListener('click', function(){
+        const checkinIso = document.getElementById('checkin-ar').dataset.isodate;
+        const checkoutIso = document.getElementById('checkout-ar').dataset.isodate;
+        const checkinBR = formatBRdate(checkinIso);
+        const checkoutBR = formatBRdate(checkoutIso);
+        const guestsSel = document.getElementById('guests-ar');
+        const guests = guestsSel.options[guestsSel.selectedIndex].text;
+        let errorEl = document.getElementById('reserveError-ar');
+        errorEl.textContent = "";
+        if (!checkinIso || !checkoutIso) {
+            errorEl.textContent = "Por favor, selecione as datas de check-in e checkout.";
+            return;
+        }
+        let ci = new Date(checkinIso+"T00:00:00");
+        let co = new Date(checkoutIso+"T00:00:00");
+        if (co <= ci) {
+            errorEl.textContent = "A data de checkout deve ser depois do check-in.";
+            return;
+        }
+        let msg = `Olá! Gostaria de solicitar reserva para a CASA AROEIRA.\nCheck-in: ${checkinBR}\nCheck-out: ${checkoutBR}\nHóspedes: ${guests}\nObrigado!`;
+        let url = "https://wa.me/5511947416919?text=" + encodeURIComponent(msg);
+        window.open(url, "_blank");
+    });
+});
+// Permite fechar com ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeCustomCalendar();
+});
+</script>
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -712,5 +1079,243 @@ Distâncias:
       if (e.target && e.target.matches('.carousel-btn')) e.stopPropagation();
     });
   </script>
+
+    <script>
+        // [SEU JS CONTINUA IGUAL ATÉ initReservationForm]
+        /* ... [Todo o JS original acima continua igual] ... */
+
+        // ↓↓↓ INÍCIO DO CÓDIGO DE CALENDÁRIO PERSONALIZADO COM AIRBNB iCAL ↓↓↓
+        
+        // ✅ CONFIGURAÇÃO AIRBNB iCAL
+        // ↓↓↓ LINK iCAL DO AIRBNB (JÁ CONFIGURADO COM SEU LINK) ↓↓↓
+        const AIRBNB_ICAL_URL = 'https://www.airbnb.com/calendar/ical/1155625932564787455.ics?s=1c3ddf9823110dc2fc6573e495bce09e&locale=pt';
+        // ↑↑↑ SEU LINK iCAL DO AIRBNB ↑↑↑
+        
+        const CORS_PROXY = 'https://corsproxy.io/?';
+
+        // Utils
+        function addDays(dateStr, num) {
+            const d = new Date(dateStr + 'T00:00:00');
+            d.setDate(d.getDate() + num);
+            return d;
+        }
+
+        function formatISOdate(d) {
+            let yyyy = d.getFullYear();
+            let mm = String(d.getMonth() + 1).padStart(2, '0');
+            let dd = String(d.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        let reservedDates = [];
+        let reservedRanges = [];
+        let reservedRangesSet = new Set(); // para performance de pesquisa
+
+        // ✅ NOVA FUNÇÃO - LÊ O ARQUIVO iCAL DO AIRBNB
+        async function fetchCalendarReservations(year, month) {
+            try {
+                // Busca o arquivo .ics do Airbnb através do proxy CORS
+                let res = await fetch(CORS_PROXY + encodeURIComponent(AIRBNB_ICAL_URL));
+                let icsText = await res.text();
+                
+                // Limpa arrays de datas reservadas
+                reservedDates = [];
+                reservedRanges = [];
+                reservedRangesSet = new Set();
+
+                // Separa os eventos do arquivo iCal (cada evento começa com BEGIN:VEVENT)
+                let events = icsText.split('BEGIN:VEVENT');
+                
+                // Processa cada evento (reserva do Airbnb)
+                for (let i = 1; i < events.length; i++) {
+                    let event = events[i];
+                    
+                    // Extrai data de início (DTSTART) - formato: DTSTART:20250101
+                    let startMatch = event.match(/DTSTART[;:].*?:(\d{8})/);
+                    // Extrai data de fim (DTEND) - formato: DTEND:20250105
+                    let endMatch = event.match(/DTEND[;:].*?:(\d{8})/);
+                    
+                    if (startMatch && endMatch) {
+                        // Converte de YYYYMMDD para YYYY-MM-DD
+                        let startStr = startMatch[1]; // Ex: "20250101"
+                        let endStr = endMatch[1];     // Ex: "20250105"
+                        
+                        let startDate = `${startStr.slice(0,4)}-${startStr.slice(4,6)}-${startStr.slice(6,8)}`;
+                        let endDate = `${endStr.slice(0,4)}-${endStr.slice(4,6)}-${endStr.slice(6,8)}`;
+                        
+                        let startDt = new Date(startDate + 'T00:00:00');
+                        let endDt = new Date(endDate + 'T00:00:00');
+                        
+                        // Marca todos os dias do período como reservados
+                        // O endDate do iCal é EXCLUSIVO (não inclui o último dia)
+                        for (let d = new Date(startDt); d < endDt; d.setDate(d.getDate() + 1)) {
+                            let isod = formatISOdate(d);
+                            reservedDates.push(isod);
+                            reservedRangesSet.add(isod);
+                        }
+                        
+                        reservedRanges.push({
+                            start: startDate, 
+                            end: formatISOdate(addDays(endDate, -1))
+                        });
+                    }
+                }
+                
+                console.log('✅ Datas reservadas do Airbnb carregadas:', reservedDates.length);
+                
+            } catch(e) {
+                console.error("❌ Erro ao ler calendário do Airbnb:", e);
+                alert("Não foi possível carregar as disponibilidades. Verifique sua conexão ou o link iCAL.");
+            }
+        }
+
+        // Cria modal do calendário customizado
+        let calendarTargetInput = null; // input alvo ("checkin" ou "checkout")
+        let calendarSelectedDate = null;
+
+        function openCustomCalendar(targetInputId) {
+            calendarTargetInput = document.getElementById(targetInputId);
+            if (!calendarTargetInput) return;
+
+            // Coloca mês do input, ou mês atual
+            let today = new Date();
+            let showYear = today.getFullYear();
+            let showMonth = today.getMonth();
+
+            if (calendarTargetInput.value) {
+                let dt = new Date(calendarTargetInput.value + 'T00:00:00');
+                showYear = dt.getFullYear();
+                showMonth = dt.getMonth();
+            }
+
+            // Busca os eventos e mostra
+            document.getElementById("customCalendarModal").classList.add("active");
+            document.body.style.overflow = "hidden";
+
+            calendarSelectedDate = calendarTargetInput.value;
+            setupCalendar(showYear, showMonth);
+
+            // Controls
+            document.getElementById("calendarPrevMonth").onclick = function() {
+                showMonth -= 1;
+                if (showMonth < 0) { showMonth = 11; showYear -= 1;}
+                setupCalendar(showYear, showMonth);
+            };
+            document.getElementById("calendarNextMonth").onclick = function() {
+                showMonth += 1;
+                if (showMonth > 11) { showMonth = 0; showYear += 1;}
+                setupCalendar(showYear, showMonth);
+            };
+        }
+
+        async function setupCalendar(year, month) {
+            document.getElementById("calendarMonthText").textContent = monthNamesPt[month] + " " + year;
+            document.getElementById("calendarTitle").textContent = calendarTargetInput === document.getElementById("checkin")
+                ? "Selecione o check-in desejado" : "Selecione o check-out desejado";
+
+            await fetchCalendarReservations(year, month);
+
+            let firstDay = new Date(year, month, 1).getDay();
+            let daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Preencher grid (7 colunas: Dom-Sab, começando do domingo)
+            let grid = [];
+            for (let i = 0; i < firstDay; i++) {
+                grid.push({day: null, outside: true});
+            }
+            for (let d = 1; d <= daysInMonth; d++) {
+                let dateObj = new Date(year, month, d);
+                let isodate = formatISOdate(dateObj);
+                let reserved = reservedRangesSet.has(isodate);
+                let available = !reserved && dateObj >= new Date();
+                grid.push({
+                    day: d,
+                    dateStr: isodate,
+                    reserved,
+                    available,
+                    outside: false,
+                    selected: (isodate === calendarSelectedDate)
+                });
+            }
+            // Preencher o resto até 42 células
+            while (grid.length % 7 !== 0) grid.push({day: null, outside: true});
+
+            // Renderizar
+            let weekNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+            let gridHtml = '';
+            for (let wn of weekNames) {
+                gridHtml += `<div class="calendar-weekday">${wn}</div>`;
+            }
+            for (let cell of grid) {
+                if (cell.outside) {
+                    gridHtml += `<div class="calendar-day outside"></div>`;
+                } else {
+                    let classes = "calendar-day";
+                    if (cell.reserved) classes += " reserved";
+                    else if (cell.available) classes += " available";
+                    if (cell.selected) classes += " selected";
+                    if (cell.dateStr === formatISOdate(new Date())) classes += " today";
+                    gridHtml += `<div class="${classes}" data-datestr="${cell.dateStr}">${cell.day}</div>`;
+                }
+            }
+            document.getElementById("calendarGrid").innerHTML = gridHtml;
+
+            // Adiciona handler de click (apenas nas disponíveis)
+            Array.from(document.querySelectorAll('.calendar-day.available')).forEach(dayEl => {
+                dayEl.onclick = function() {
+                    calendarSelectedDate = this.getAttribute('data-datestr');
+                    calendarTargetInput.value = calendarSelectedDate;
+                    closeCustomCalendar();
+                    // para UX, dispara evento 'change' para integrar ao resto do código
+                    calendarTargetInput.dispatchEvent(new Event('input'));
+                    calendarTargetInput.dispatchEvent(new Event('change'));
+                };
+            });
+        }
+
+        function closeCustomCalendar() {
+            document.getElementById("customCalendarModal").classList.remove("active");
+            document.body.style.overflow = "auto";
+            calendarTargetInput = null;
+        }
+
+        // Names PT
+        const monthNamesPt = [
+            "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+            "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+        ];
+
+        // Intercepta click nos inputs
+        window.addEventListener("DOMContentLoaded", () => {
+            const checkinEl = document.getElementById('checkin');
+            const checkoutEl = document.getElementById('checkout');
+            // Desabilita input nativo tipo calendário e mostra custom
+            [checkinEl, checkoutEl].forEach(input => {
+                if (!input) return;
+                input.readOnly = true; // evita que o padrão nativo abra
+                input.addEventListener("mousedown", function(e) {
+                    e.preventDefault();
+                    openCustomCalendar(this.id);
+                });
+                input.addEventListener("focus", function(e) {
+                    // Adicional: abre também no foco (mobile)
+                    openCustomCalendar(this.id);
+                });
+            });
+        });
+
+        // Permite fechar com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeCustomCalendar();
+            }
+        });
+
+        // ↑↑↑ FIM DO CÓDIGO CALENDÁRIO ↑↑↑
+
+        // [SEU JS ORIGINAL DA RESERVA CONTINUA ABAIXO, SEM MUDANÇAS]
+        // ... (restante igual ao arquivo enviado)
+    </script>
+    <!-- Fim body e html -->
 </body>
 </html>
